@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="row">
+    <div class="row row-cols md-3">
+      <mat-card class="mat-card-course" *ngFor="let course of course_list | async">
+        <mat-card-header>
+          <mat-card-title id="title">{{ course.course_title }}</mat-card-title>
+          <mat-card-subtitle id="subtitle">{{ course.course_category }}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="img" mat-card-image src={{course.course_image}} alt="Course Image">
+        <mat-card-content>
+          <p>
+            <b>Description:</b> {{ course.course_description }}
+          </p>
+          <p>
+            <b>Rating:</b> {{ course.course_rating }}
+          </p>
+          <p>
+            <b>Difficulty:</b> {{ course.course_difficulty }}
+          </p>
+          <p>
+            <b>Number of Students:</b> {{ course.num_of_students }}
+          </p>
+          <p>
+            <b>Lecturer:</b> {{ course.lecturer_name }}
+          </p>
+          <p>
+            <b>Release Year:</b> {{ course.release_year }}
+          </p>
+          <p>
+            <b>Review Count:</b> {{ course.review_count }}
+          </p>
+          <button class="btn btn-primary" id="delete" (click)="onDeleteCourse(course)">Delete</button>
+          <button class="btn btn-primary" id="edit" (click)="onEditCourse(course)">Edit </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div> <!-- container -->
+
+<div class="container" *ngFor="let course of course_list | async">
+  <video width="400" controls>
+    <source src="{{ course.lecture_video_one }}" type="video/mp4">
+  </video>
+  <video width="400" controls>
+    <source src="{{ course.lecture_video_two }}" type="video/mp4">
+  </video>
+  <video width="400" controls>
+    <source src="{{ course.lecture_video_three }}" type="video/mp4">
+  </video>
+</div>
+
+<h1>Reviews Section</h1>
+<div class="container" *ngFor="let course of course_list | async">
+  <mat-card class="mat-card-review" *ngFor="let review of reviews | async">
+    <mat-card-header>
+      <mat-card-title id="title">{{ review.name }}</mat-card-title>
+      <mat-card-subtitle id="subtitle">{{ review.date.substr(0,10) | date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ review.text }}
+      </p>
+      <p>
+        <b>Votes: </b>
+        Cool: {{ review.cool }} Funny: {{ review.funny }} Useful: {{ review.useful }}
+      </p>
+        <mat-icon class="orange-icon" (click)="onUpdateCool(review)" *ngIf="!hide">sentiment_satisfied_alt</mat-icon>
+        <mat-icon class="purple-icon" (click)="onUpdateFunny(review)" *ngIf="!hide">sentiment_very_satisfied</mat-icon>
+        <mat-icon class="green-icon" (click)="onUpdateUseful(review)" *ngIf="!hide">thumb_up_alt</mat-icon>
+    </mat-card-content>
+    <hr>
+    <h3>Review Options:</h3>
+      <mat-icon class="red-icon" (click)="onDeleteReview(review._id, course)">delete</mat-icon>
+      <mat-icon class="blue-icon" (click)="onEditReview(review)">edit</mat-icon>
+  </mat-card>
+</div> <!-- container -->
+
+<h1>Create a Course Review</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <h2>Leave a review below!</h2>
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(course)" *ngFor="let course of course_list | async">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" formControlName="name"
+              [ngClass]="{ 'error': isInvalid('name') }">
+          </div>
+          <div class="form-group">
+            <label for="review">Please leave your review below
+            </label>
+            <textarea id="review" rows="3" name="review" class="form-control" formControlName="review"
+              [ngClass]="{ 'error': isInvalid('review') }"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="stars">Please provide a rating
+              (5 = best)</label>
+            <select id="stars" name="stars" class="form-control" formControlName="stars">
+              <option value="1">1 star</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">4 stars</option>
+              <option value="5">5 stars</option>
+            </select>
+          </div>
+
+          <span *ngIf="isIncomplete()">You must complete all fields</span>
+          <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      <ng-template #loggedOut>
+        <h2>Please login to review this course.</h2>
+      </ng-template>
+      <ng-template #loggedOut2>
+        <h2>Please login to delete or edit reviews.</h2>
+      </ng-template>
+      <ng-template #loggedOut3>
+        <h2>Please login to delete or edit courses.</h2>
+      </ng-template>
+      <ng-template #loggedOut4>
+        <h2>Please login to vote on reviews.</h2>
+      </ng-template>
+      <ng-template #loggedOut5>
+        <h2>Please login to edit courses.</h2>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6">
+  <button class="btn btn-primary" id="btn" (click)="saveReview()">Save Review</button>
+</div>
+
+<h1>Edit Course Details</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <h2>Please Enter the Courses Details</h2>
+        <form [formGroup]="courseForm2">
+          <div class="form-group">
+            <label for="course_title">Title</label>
+            <input type="text" id="course_title" name="course_title" class="form-control"
+              formControlName="course_title">
+          </div>
+          <div class="form-group">
+            <label for="course_category">Category</label>
+            <input type="text" id="course_category" name="course_category" class="form-control"
+              formControlName="course_category">
+          </div>
+          <div class="form-group">
+            <label for="course_image">Image</label>
+            <input type="text" id="course_image" name="course_image" class="form-control"
+              formControlName="course_image">
+          </div>
+          <div class="form-group">
+            <label for="course_description">Description</label>
+            <input type="text" id="course_description" name="course_description" class="form-control"
+              formControlName="course_description">
+          </div>
+          <div class="form-group">
+            <label for="course_difficulty">Difficulty</label>
+            <input type="text" id="course_difficulty" name="course_difficulty" class="form-control"
+              formControlName="course_difficulty">
+          </div>
+          <div class="form-group">
+            <label for="lecturer_name">Lecturer Name</label>
+            <input type="text" id="lecturer_name" name="lecturer_name" class="form-control"
+              formControlName="lecturer_name">
+          </div>
+          <div class="form-group">
+            <label for="release_year">Release Year</label>
+            <input type="text" id="release_year" name="release_year" class="form-control"
+              formControlName="release_year">
+          </div>
+          <span *ngIf="isIncomplete()">You must complete all fields</span>
+          <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      <ng-template #loggedOut>
+        <h2>Would you like to add a course? Please login to do so</h2>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let course of course_list | async" class="col-sm-6">
+  <button class="btn btn-primary" id="btn" (click)="saveCourse(course)">Save Course</button>
+</div>
+
+<ngx-spinner></ngx-spinner>
+
+<div class="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28 h-full">
+  <h1 class="text-3xl font-bold tracking-tight text-gray-900 items-center flex">
+    <button
+      type="button"
+      *ngIf="joinedChat && !loading"
+      (click)="leaveClassChat()"
+      class="inline-flex mx-4 items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+    >
+      Leave chat
+    </button>
+  </h1>
+  <div class="relative mx-auto max-w-7xl">
+    <div
+      class="mt-4 grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8 h-full"
+    >
+      <!-- Course Chat -->
+      <div class="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
+        <section>
+          <div class="overflow-hidden rounded-lg bg-white shadow h-full">
+            <div class="p-6 h-full flex justify-center">
+              <!-- <stream-channel-list></stream-channel-list> -->
+              <stream-channel class="flex-grow" *ngIf="!loading && joinedChat">
+                <stream-channel-header></stream-channel-header>
+                <stream-message-list></stream-message-list>
+                <stream-notification-list></stream-notification-list>
+                <stream-message-input></stream-message-input>
+                <stream-thread name="thread">
+                  <stream-message-list mode="thread"></stream-message-list>
+                  <stream-message-input mode="thread"></stream-message-input>
+                </stream-thread>
+              </stream-channel>
+
+              <div *ngIf="loading && !joinedChat">Loading chat...</div>
+              <div
+                *ngIf="!loading && !joinedChat"
+                class="flex flex-col gap-4 justify-center items-center"
+              >
+                <span class="text-xl"
+                  >You are not yet a member of this chat.</span
+                >
+                <button
+                  type="button"
+                  (click)="joinClassChat()"
+                  class="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                  Join chat
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

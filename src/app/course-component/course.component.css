@@ -1,0 +1,118 @@
+.error {
+    background-color: #fff0f0;
+}
+
+.red-icon {
+    color: red;
+}
+
+.red-icon:hover {
+    cursor: pointer;
+}
+
+.purple-icon {
+    color: purple;
+}
+
+.purple-icon:hover {
+    cursor: pointer;
+}
+
+.green-icon {
+    color: green;
+}
+
+.green-icon:hover {
+    cursor: pointer;
+}
+
+.blue-icon {
+    color: blue;
+}
+
+.blue-icon:hover {
+    cursor: pointer;
+}
+
+.orange-icon {
+    color: orange;
+    border: black;
+}
+
+.orange-icon:hover {
+    cursor: pointer;
+}
+
+.mat-card-course {
+    width: 400px;
+    height: 700px;
+    margin: 20px;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.mat-card-review {
+    width: 500px;
+    margin: 20px;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    background-color: white;
+}
+
+img {
+    width: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 250px;
+}
+
+.container {
+    background-color: darkgrey;
+    width: 100%;
+}
+
+p {
+    margin-left: 350px;
+    margin: auto;
+    text-align: left;
+    padding: 5px;
+}
+
+#delete {
+    background-color: red;
+    color: black;
+    border: 1px solid black;
+}
+
+#edit {
+    background-color: lightgreen;
+    color: black;
+    border: 1px solid black;
+}
+
+#btn {
+    margin-left: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin-left: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#title {
+    font-weight: bold;
+}
+
+#subtitle {
+    color: grey;
+}

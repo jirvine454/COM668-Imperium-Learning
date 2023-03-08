@@ -1,0 +1,82 @@
+.mat-card {
+    width: 300px;
+    margin: 20px;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    background-color: white;
+  }
+  
+  .button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px;
+    border: 1px solid black;
+  }
+  
+  .button-row2 {
+    margin-top: 40px;
+    margin-left: 850px;
+  }
+  
+  img {
+    width: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  p {
+    margin: 20px;
+    text-align: justify;
+  }
+  
+  .container {
+    background-color: lightgray;
+    width: 100%;
+  }
+  
+  #title {
+    align-content: left;
+    font-weight: bold;
+  }
+  
+  #subtitle {
+    align-content: left;
+    color: grey;
+  }
+  
+  .red-icon {
+    color: red;
+  }
+  
+  .red-icon:hover {
+    cursor: pointer;
+  }
+  
+  .blue-icon {
+    color: blue;
+  }
+  
+  .blue-icon:hover {
+    cursor: pointer;
+  }
+  
+  .error {
+    background-color: lightcoral;
+  }
+  
+  #heading {
+    margin-top: 70px;
+    text-align: center;
+  }
+  
+  .relative {
+    margin-bottom: 50px;
+  }
+  
+  #text {
+    color: yellow;
+  }

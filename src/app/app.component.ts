@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StreamService } from './services/stream.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor(private streamService: StreamService) {}
 }

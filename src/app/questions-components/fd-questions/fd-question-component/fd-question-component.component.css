@@ -1,0 +1,35 @@
+.btn {
+    background-color: blue;
+    color: white;
+    margin-top: 30px;
+}
+.btn1 {
+    background-color: orange;
+    margin-top: 10px;
+}
+
+b {
+    color: green;
+}
+
+hr {
+    margin-left: 10px;
+    width: 1000px;
+}
+
+.card1 {
+    margin-top: 70px;
+}
+
+.card {
+    margin: 20px;
+    border-color: white;
+}
+
+.optioncard:hover {
+    background-color: yellow;
+}
+
+.answer {
+    margin-top: 100px;
+}

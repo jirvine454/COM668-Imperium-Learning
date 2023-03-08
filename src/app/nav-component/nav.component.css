@@ -1,0 +1,14 @@
+.active-link {
+  @apply underline;
+}
+
+img {
+  height: 30px;
+  width: 30px;
+}
+
+h6 {
+  font-style: italic;
+  color: #B09A70;
+  margin-top: 2px;
+}

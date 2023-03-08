@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="row row-cols md-3">
+            <mat-card class="mat-card" *ngFor="let course of course_list" style="cursor: pointer"
+                [routerLink]="['/app/courses', course._id]">
+                <mat-card-header>
+                    <mat-card-title id="title">{{ course.course_title }}</mat-card-title>
+                    <mat-card-subtitle id="subtitle">{{ course.course_category }}</mat-card-subtitle>
+                </mat-card-header>
+                <img class="img" mat-card-image src={{course.course_image}} alt="Course Image">
+                <mat-card-content>
+                    <p>
+                        <b>Description:</b> {{ course.course_description }}
+                    </p>
+                    <p>
+                        <b>{{course.review_count }}</b> reviews available
+                    </p>
+                    <p>
+                        <b>Lecturer:</b> {{ course.lecturer_name }}
+                    </p>
+                    <p>
+                        <b>Release Year:</b> {{ course.release_year }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div> <!-- container -->

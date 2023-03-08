@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* html, body { height: 100%; } */
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+@import "~stream-chat-angular/src/assets/styles/v2/css/index.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply h-full;
+}
+body {
+  @apply h-full;
+}
+
+:root .str-chat {
+  --str-chat__channel-header-background-color: theme("colors.sky.100");
+  --str-chat__channel-preview-active-background-color: theme("colors.sky.300");
+}
