@@ -1,0 +1,93 @@
+{
+    "questions": [{
+            "questionText": "1) What is the correct HTML for adding a background color?",
+            "options": [{
+                    "text": "<body bgcolor='yellow'>",
+                    "correct": true
+                },
+                {
+                    "text": "<body color='yellow'>"
+                },
+                {
+                    "text": "<background>yellow</background>"
+                },
+                {
+                    "text": "<body background='yellow'>"
+                }
+            ],
+            "explanation": "You can set a background color for an HTML document by adding <body bgcolor='yellow'> to the <body> element."
+        },
+        {
+            "questionText": "2) Tags that are not directly displayed on the page are defined in the _____ section.",
+            "options": [{
+                    "text": "<html>"
+                },
+                {
+                    "text": "<body>"
+                },
+                {
+                    "text": "<title"
+                },
+                {
+                    "text": "<head>",
+                    "correct": true
+                }
+            ],
+            "explanation": "The <head> tag in HTML is used to define the head portion of the document which contains information related to the document."
+        },
+        {
+            "questionText": "3) When should you use path along with file name of a picture in the <img> tag?",
+            "options": [{
+                    "text": "When the path is optional and not necessary"
+                },
+                {
+                    "text": "When the location of the image file and html file are different",
+                    "correct": true
+                },
+                {
+                    "text": "When the image file and html file both are in same location"
+                },
+                {
+                    "text": "When the path is always necessary when inserting the image"
+                }
+            ],
+            "explanation": "Images are linked to web pages by using the <img> tag and should inlcude the file path and name if the location of the image file and html file are different."
+        },
+        {
+            "questionText": "4) Which attribute merges two cells horizontally in the TD tag?",
+            "options": [{
+                    "text": "merge=colspan2"
+                },
+                {
+                    "text": "rowspan=2",
+                    "correct": true
+                },
+                {
+                    "text": "colspan=2"
+                },
+                {
+                    "text": "merge=row2"
+                }
+            ],
+            "explanation": "The rowspan is used to merge or combine the number of cells in a row whereas the colspan is used to merge column cells in a table."
+        },
+        {
+            "questionText": "5) What is the correct HTML tag to make a text bold?",
+            "options": [{
+                    "text": "<b>",
+                    "correct": true
+                },
+                {
+                    "text": "<bold>"
+                },
+                {
+                    "text": "<bb>"
+                },
+                {
+                    "text": "<bld>"
+                }
+            ],
+            "explanation": "The <b> tag specifies bold text without any extra importance."
+        }
+    ]
+}
