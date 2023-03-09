@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/chat-app"
+  publish = "dist/frontend"
   command = "ng build"
   functions = "./netlify/functions"
 [[redirects]]
