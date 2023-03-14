@@ -116,10 +116,6 @@ var routes: any = [
         component: DatabaseDevelopmentComponent
       },
       {
-        path: 'chatbot',
-        component: ChatbotComponent
-      },
-      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

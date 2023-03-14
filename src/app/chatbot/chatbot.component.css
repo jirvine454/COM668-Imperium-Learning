@@ -22,7 +22,8 @@ body {
 /* CHATBOX
 =============== */
 .chatbox {
-    position: absolute;
+    position: fixed;
+    z-index:1000;
     bottom: 30px;
     right: 30px;
 }
@@ -34,7 +35,6 @@ body {
     background: #eee;
     width: 300px;
     height: 350px;
-    z-index: -123456;
     opacity: 0;
     transition: all .5s ease-in-out;
 }
@@ -42,9 +42,7 @@ body {
 /* CONTENT ISOPEN */
 .chatbox--active {
     transform: translateY(-40px);
-    z-index: 123456;
     opacity: 1;
-
 }
 
 /* BUTTON */
@@ -154,7 +152,7 @@ body {
 .chatbox_button button:focus,
 .chatbox_button button:visited {
     padding: 10px;
-    background: white;
+    background: var(--primary);
     border: none;
     outline: none;
     border-top-left-radius: 50px;
