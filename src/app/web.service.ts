@@ -21,16 +21,48 @@ export class WebService {
         return this.http.get('http://localhost:5000/api/v1.0/courses/' + id);
     }
 
-    searchCourseName(name: any) {
-        return this.http.get('http://localhost:5000/api/v1.0/courses/searchName/' + name);
+    //Search Bar Searchability
+
+    searchCourseName(course_title: any) {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/course_title=' + course_title);
     }
 
-    searchCourseYear(name: any) {
-        return this.http.get('http://localhost:5000/api/v1.0/courses/searchYear/' + name);
+    //Home Page Searchability
+
+    searchCourseCategory(course_category: any) {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/course_category=' + course_category);
     }
 
-    searchCourseCategory(name: any) {
-        return this.http.get('http://localhost:5000/api/v1.0/courses/searchCourseCategory/' + name);
+    //Filter Searchability
+    
+    searchCourseDifficulty(difficulty: any) {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/course_difficulty=' + difficulty);
+    }
+
+    searchCourseYear(year: any) {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/release_year=' + year);
+    }
+
+    searchCourseRating1() {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/course_rating2.5');
+    }
+
+    searchCourseRating2() {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/course_rating3.5');
+    }
+
+    searchCourseRating3() {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/course_rating4.5');
+    }
+
+    //Sorting Searchability
+
+    sortAscendingOrder() {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/ascendingOrder');
+    }
+
+    sortDescendingOrder() {
+        return this.http.get('http://localhost:5000/api/v1.0/courses/descendingOrder');
     }
 
     getReviews(id: any) {

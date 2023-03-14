@@ -38,6 +38,8 @@ import { DatabaseDevelopmentComponent } from './course-categories/Database-Devel
 import { BackendDevelopmentComponent } from './course-categories/Backend-Development/backend-development.component';
 import { StudentsComponent } from './students/students.component';
 import { StudentSectionComponentComponent } from './student-section-component/student-section-component.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 var routes: any = [
   {
@@ -114,6 +116,10 @@ var routes: any = [
         component: DatabaseDevelopmentComponent
       },
       {
+        path: 'chatbot',
+        component: ChatbotComponent
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
@@ -149,6 +155,7 @@ var routes: any = [
     BackendDevelopmentComponent,
     StudentsComponent,
     StudentSectionComponentComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
@@ -163,6 +170,7 @@ var routes: any = [
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
+    MatSelectModule,
     FormsModule,
     NgSelectModule,
     BrowserAnimationsModule,
