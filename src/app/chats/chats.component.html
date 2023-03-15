@@ -1,3 +1,17 @@
+<style>
+  .gradient {
+     margin-top: -24px;
+     background: #B09A70;
+  }
+</style>
+
+<div class="text-center">
+  <h1><b id="h1">My Chats</b></h1>
+</div>
+<div class="w-full mb-4">
+  <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+</div>
+
 <div *ngIf="!(chatReady | async); else chat" class="text-2xl">
   Chat loading...
 </div>

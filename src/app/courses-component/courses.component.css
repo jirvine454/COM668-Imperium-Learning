@@ -17,8 +17,9 @@
 }
 
 .button-row2 {
-  margin-top: 40px;
-  margin-left: 850px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 p {
@@ -61,7 +62,9 @@ p {
 }
 
 #heading {
+  font-size: 45px;
   margin-top: 70px;
+  margin-bottom: 30px;
   text-align: center;
 }
 

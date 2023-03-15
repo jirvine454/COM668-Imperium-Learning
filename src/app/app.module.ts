@@ -15,7 +15,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { WdQuestionComponentComponent } from './questions-components/wd-questions/wd-question-component/wd-question-component.component';
 import { ChangeBgDirective } from './change-bg.directive';
 import { AssessmentComponentComponent } from './assessment-component/assessment-component.component';
@@ -157,7 +156,6 @@ var routes: any = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NoopAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatIconModule,

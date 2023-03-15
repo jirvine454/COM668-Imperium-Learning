@@ -7,8 +7,9 @@ img {
   width: 30px;
 }
 
-h6 {
+#h6 {
   font-style: italic;
-  color: #B09A70;
-  margin-top: 2px;
+  color: white;
+  margin-top: 5px;
+  font-size: 15px;
 }

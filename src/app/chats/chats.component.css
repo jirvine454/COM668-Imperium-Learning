@@ -23,3 +23,9 @@ stream-thread {
 stream-channel-header {
     margin-bottom: 10px;
 }
+
+#h1 {
+    font-size: 45px;
+    margin-top: 70px;
+    line-height: 1.2;
+}

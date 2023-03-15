@@ -1,15 +1,13 @@
-.btn {
-    background-color: blue;
+#btn {
+    background-color: #005F50;
     color: white;
     margin-top: 30px;
 }
-.btn1 {
-    background-color: orange;
-    margin-top: 10px;
-}
 
-b {
-    color: green;
+#retry {
+    background-color: #B09A70;
+    margin-top: 10px;
+    color: white;
 }
 
 hr {
@@ -24,12 +22,29 @@ hr {
 .card {
     margin: 20px;
     border-color: white;
+    background-color: #B09A70;
 }
 
 .optioncard:hover {
     background-color: yellow;
 }
 
-.answer {
+.text {
+    font-size: 20px;
+}
+
+#h3 {
+    font-size: 30px;
+}
+
+#margin {
     margin-top: 100px;
+}
+
+#green {
+    color: #005F50;
+}
+
+#red {
+    color: red;
 }
