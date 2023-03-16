@@ -34,7 +34,7 @@ body {
     flex-direction: column;
     background: #eee;
     width: 300px;
-    height: 350px;
+    height: 500px;
     opacity: 0;
     transition: all .5s ease-in-out;
 }
@@ -52,6 +52,7 @@ body {
 
 .send_button {
     padding: 6px;
+    font-size: 15px;
     background: transparent;
     border: none;
     outline: none;
@@ -82,7 +83,7 @@ body {
 
 .chatbox_support {
     background: #f9f9f9;
-    height: 450px;
+    height: 500px;
     width: 350px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
@@ -103,7 +104,14 @@ body {
 }
 
 .chatbox_image--header {
+    margin-top: 10px;
     margin-right: 10px;
+    height: 100px;
+    width: 100px;
+}
+
+img {
+    border-radius: 50%;
 }
 
 .chatbox_heading--header {
@@ -115,6 +123,7 @@ body {
 .chatbox_description--header {
     font-size: .9rem;
     color: white;
+    text-align: justify;
 }
 
 /* Messages */
@@ -139,9 +148,10 @@ body {
 .chatbox_footer input {
     width: 80%;
     border: none;
-    padding: 10px 10px;
+    padding: 5px 5px;
     border-radius: 30px;
     text-align: left;
+    font-size: 15px;
 }
 
 .chatbox_send--footer {
