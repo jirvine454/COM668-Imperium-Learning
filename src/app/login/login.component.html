@@ -4,14 +4,14 @@
 	class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-center bg-cover bg-[url('https://wallpaperboat.com/wp-content/uploads/2020/02/education-04.jpg')]"
 >
 	<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-		<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+		<div class="bg-imperium-green py-8 px-4 shadow sm:rounded-lg sm:px-10">
 			<div class="space-y-6">
 				<div class="sm:mx-auto sm:w-full sm:max-w-md">
-					<h2 id="h2" class="mt-6 text-center text-3xl font-extrabold text-gray-900"><b>Imperium Learning</b></h2>
+					<h2 id="h2" class="mt-6 text-center text-3xl font-extrabold text-white"><b>Imperium Learning</b></h2>
 				</div>
-
+				<img src="../assets/images/logo.jpg" alt="image" class="mx-auto" />
 				<div class="space-y-6">
-					<label for="email" class="block text-sm font-medium text-gray-700"> Email address </label>
+					<label for="email" class="block text-sm font-medium text-white"> Email address </label>
 					<div class="mt-1">
 						<input
 							type="email"
@@ -24,7 +24,7 @@
 				</div>
 
 				<div class="space-y-6">
-					<label for="email" class="block text-sm font-medium text-gray-700"> Password </label>
+					<label for="email" class="block text-sm font-medium text-white"> Password </label>
 					<div class="mt-1">
 						<input
 							type="password"
@@ -61,15 +61,15 @@
 					<button
 						(click)="register()"
 						[disabled]="email === '' || password === ''"
-						class="w-full flex justify-center py-2 px-4 mb-2 disabled:opacity-50 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+						class="w-full flex justify-center py-2 px-4 mb-2 disabled:opacity-50 border-black rounded-md shadow-sm text-sm font-medium text-white bg-imperium-gold hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
 					>
-						Sign Up
+						New to Imperium Learning? Sign Up Here
 					</button>
 
 					<button
 						(click)="login()"
 						[disabled]="email === '' || password === ''"
-						class="w-full flex justify-center py-2 px-4 disabled:opacity-50 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+						class="w-full flex justify-center py-2 px-4 disabled:opacity-50 border-black rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 					>
 						Login
 					</button>
