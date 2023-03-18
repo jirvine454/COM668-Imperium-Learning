@@ -6,7 +6,8 @@ module.exports = {
       colors: {
       'imperium-green': '#005F50',
       'imperium-gold': '#B09A70',
-      'imperium-hover': '#003300'
+      'imperium-hover-green': '#003300',
+      'imperium-hover-gold': '#a67b5b'
     },},
   },
   plugins: [require('@tailwindcss/forms')],

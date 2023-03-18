@@ -39,6 +39,8 @@ import { StudentsComponent } from './students/students.component';
 import { StudentSectionComponentComponent } from './student-section-component/student-section-component.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { InstructorComponent } from './instructor/instructor.component';
+import { AuthModule } from '@auth0/auth0-angular';
 
 var routes: any = [
   {
@@ -115,13 +117,16 @@ var routes: any = [
         component: DatabaseDevelopmentComponent
       },
       {
+        path: 'instructor',
+        component: InstructorComponent
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
       }
     ],
   },
-
   {
     path: '**',
     redirectTo: '/',
@@ -150,7 +155,8 @@ var routes: any = [
     BackendDevelopmentComponent,
     StudentsComponent,
     StudentSectionComponentComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    InstructorComponent
   ],
   imports: [
     BrowserModule,
@@ -173,6 +179,11 @@ var routes: any = [
     TranslateModule.forRoot(),
     StreamAutocompleteTextareaModule,
     StreamChatModule,
+    // Auth0 for become an instructor
+    AuthModule.forRoot( {
+      domain:'dev-2hct0ry2urm4oaqi.uk.auth0.com',
+      clientId: 'dUkamag8r5jxRG5pyXXWAiUM8T7lbtNc'
+      })
   ],
   providers: [WebService],
   bootstrap: [AppComponent]

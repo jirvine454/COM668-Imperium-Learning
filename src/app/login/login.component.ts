@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
+import { AuthService as env } from '@auth0/auth0-angular';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { WebService } from '../web.service';
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 		private router: Router,
 		private spinner: NgxSpinnerService,
 		public webService: WebService,
+		public authService: env
 	) { }
 
 	ngOnInit(): void { }

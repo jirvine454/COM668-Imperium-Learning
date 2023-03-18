@@ -1,0 +1,16 @@
+<p>instructor works!</p>
+
+<ng-container *ngIf="authService.isAuthenticated$ | async; 
+ else loggedOut">
+    <button class="btn btn-primary" (click)="authService.logout()">Logout</button>
+    <hr>
+    <h4>Current user</h4>
+    <ul *ngIf="authService.user$ | async as user">
+        <li>Name: {{ user.name }}</li>
+        <li>Email: {{ user.email }}</li>
+    </ul>
+</ng-container>
+<ng-template #loggedOut>
+    <button class="btn btn-primary" (click)="authService.loginWithRedirect()" (click)="test()">
+        Login</button>
+</ng-template>
