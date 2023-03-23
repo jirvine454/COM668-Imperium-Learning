@@ -8,6 +8,7 @@ import { ChannelService, ChatClientService } from 'stream-chat-angular';
 import { take } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { StreamService } from '../services/stream.service';
+import { AuthService as env } from '@auth0/auth0-angular';
 
 @Component({
     selector: 'course',
@@ -38,8 +39,9 @@ export class CourseComponent implements OnInit {
     constructor(private webService: WebService,
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
-        public authService: AuthService,
+        public auth: AuthService,
         private snackBar: MatSnackBar,
+        public authService: env,
 
         private chatService: ChatClientService,
         private channelService: ChannelService,
@@ -118,7 +120,7 @@ export class CourseComponent implements OnInit {
             {}
         );
 
-        await channel.addMembers([this.authService.getCurrentUserId()]);
+        await channel.addMembers([this.auth.getCurrentUserId()]);
 
         this.spinner.hide();
         this.loadChat();
@@ -128,7 +130,7 @@ export class CourseComponent implements OnInit {
         this.channelService.activeChannel$.pipe(take(1)).subscribe((channel) => {
             console.log('leaving channel...', channel);
             if (channel) {
-                channel.removeMembers([this.authService.getCurrentUserId()]);
+                channel.removeMembers([this.auth.getCurrentUserId()]);
                 this.joinedChat = false;
             }
         });

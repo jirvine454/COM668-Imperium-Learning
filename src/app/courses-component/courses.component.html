@@ -10,13 +10,13 @@
   <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
 </div>
 
-<!-- This is an example component -->
+<!-- Search Bar -->
 <div class="max-w-2xl mx-auto">
     <div class="relative">
         <div class="flex absolute inset-y-0 left- items-center pl-3 pointer-events-none">
             <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
-        <input textarea matInput placeholder="Enter name or category..." type="text" #page id="default-search" class="block p-6 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" required>
+        <input textarea matInput placeholder="Enter name or category..." type="text" #page id="default-search" class="block p-6 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black" required>
         <button (click)="searchCourseName(page.value)" type="submit" class="text-white absolute right-2.5 bottom-4 bg-imperium-green hover:bg-imperium-hover-green focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
     </div>
 </div>
@@ -144,56 +144,6 @@
       </div>
   </div>
 </section>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2>Please Enter the Courses Details</h2>
-            <form [formGroup]="courseForm" (ngSubmit)="onAddCourse()">
-                <div class="form-group">
-                    <label for="course_title">Title</label>
-                    <input type="text" id="course_title" name="course_title" class="form-control"
-                        formControlName="course_title" [ngClass]="{ 'error': isInvalid('course_title') }">
-                </div>
-                <div class="form-group">
-                    <label for="course_category">Category</label>
-                    <input type="text" id="course_category" name="course_category" class="form-control"
-                        formControlName="course_category" [ngClass]="{ 'error': isInvalid('course_category') }">
-                </div>
-                <div class="form-group">
-                    <label for="course_image">Image</label>
-                    <input type="text" id="course_image" name="course_image" class="form-control"
-                        formControlName="course_image" [ngClass]="{ 'error': isInvalid('course_image') }">
-                </div>
-                <div class="form-group">
-                    <label for="course_description">Description</label>
-                    <input type="text" id="course_description" name="course_description" class="form-control"
-                        formControlName="course_description" [ngClass]="{ 'error': isInvalid('course_description') }">
-                </div>
-                <div class="form-group">
-                    <label for="course_difficulty">Difficulty</label>
-                    <input type="text" id="course_difficulty" name="course_difficulty" class="form-control"
-                        formControlName="course_difficulty" [ngClass]="{ 'error': isInvalid('course_difficulty') }">
-                </div>
-                <div class="form-group">
-                    <label for="lecturer_name">Lecturer Name</label>
-                    <input type="text" id="lecturer_name" name="lecturer_name" class="form-control"
-                        formControlName="lecturer_name" [ngClass]="{ 'error': isInvalid('lecturer_name') }">
-                </div>
-                <div class="form-group">
-                    <label for="release_year">Release Year</label>
-                    <input type="text" id="release_year" name="release_year" class="form-control"
-                        formControlName="release_year" [ngClass]="{ 'error': isInvalid('release_year') }">
-                </div>
-                <span *ngIf="isIncomplete()">You must complete all fields</span>
-                <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <ng-template #loggedOut>
-                <h2>Would you like to add a course? Please login to do so</h2>
-            </ng-template>
-        </div>
-    </div>
-</div>
 
 <div class="button-row">
     <button mat-raised-button (click)="previousPage()">Previous</button>

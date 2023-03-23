@@ -29,13 +29,15 @@
           <p>
             <b>Review Count:</b> {{ course.review_count }}
           </p>
-          <button class="btn btn-primary" id="delete" (click)="onDeleteCourse(course)">Delete</button>
-          <button class="btn btn-primary" id="edit" (click)="onEditCourse(course)">Edit </button>
+          <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
+            <button class="btn btn-primary" id="delete" (click)="onDeleteCourse(course)">Delete</button>
+            <button class="btn btn-primary" id="edit" (click)="onEditCourse(course)">Edit </button>
+        </ng-container>
         </mat-card-content>
       </mat-card>
     </div>
   </div>
-</div> <!-- container -->
+</div> 
 
 <div class="container" *ngFor="let course of course_list | async">
   <video width="400" controls>

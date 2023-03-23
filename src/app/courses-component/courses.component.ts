@@ -24,7 +24,6 @@ export class CoursesComponent {
     search_course_list: any = [];
     page: number = 1;
     course_count: any = 0;
-    courseForm: any;
     none: any;
 
     //mat select dropdown
@@ -69,16 +68,6 @@ export class CoursesComponent {
         if (sessionStorage['page']) {
             this.page = Number(sessionStorage['page']);
         }
-
-        this.courseForm = this.formBuilder.group({
-            course_title: ['', Validators.required],
-            course_category: ['', Validators.required],
-            course_image: ['', Validators.required],
-            course_description: ['', Validators.required],
-            course_difficulty: ['', Validators.required],
-            lecturer_name: ['', Validators.required],
-            release_year: ['', Validators.required]
-        });
 
         this.course_list = this.webService.getCourses(this.page);
 
@@ -126,39 +115,6 @@ export class CoursesComponent {
         sessionStorage['page'] = this.page;
         this.course_list =
             this.webService.getCourses(this.page);
-    }
-
-    onAddCourse() {
-        this.webService.postCourse(this.courseForm.value).subscribe((response: any) => {
-            this.courseForm.reset();
-            this.course_list = this.webService.getCourses(this.page);
-            this.openSnackBar("Course has been successfully added!");
-        });
-    }
-
-    isInvalid(control: any) {
-        return this.courseForm.controls[control].invalid && this.courseForm.controls[control].touched;
-    }
-
-    isUntouched() {
-        return this.courseForm.controls.course_title.pristine ||
-            this.courseForm.controls.course_category.pristine ||
-            this.courseForm.controls.course_image.pristine ||
-            this.courseForm.controls.course_description.pristine ||
-            this.courseForm.controls.course_difficulty.pristine ||
-            this.courseForm.controls.lecturer_name.pristine ||
-            this.courseForm.controls.release_year.pristine;
-    }
-
-    isIncomplete() {
-        return this.isInvalid('course_title') ||
-            this.isInvalid('course_category') ||
-            this.isInvalid('course_image') ||
-            this.isInvalid('course_description') ||
-            this.isInvalid('course_difficulty') ||
-            this.isInvalid('lecturer_name') ||
-            this.isInvalid('release_year') ||
-            this.isUntouched();
     }
 
     openSnackBar(message: string, action?: string) {
