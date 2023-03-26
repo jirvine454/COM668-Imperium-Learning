@@ -41,6 +41,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AuthModule } from '@auth0/auth0-angular';
+import { TabsComponent } from './tabs/tabs.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 var routes: any = [
   {
@@ -121,6 +123,10 @@ var routes: any = [
         component: InstructorComponent
       },
       {
+        path: 'tabs',
+        component: TabsComponent
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
@@ -156,7 +162,8 @@ var routes: any = [
     StudentsComponent,
     StudentSectionComponentComponent,
     ChatbotComponent,
-    InstructorComponent
+    InstructorComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
@@ -174,6 +181,7 @@ var routes: any = [
     FormsModule,
     NgSelectModule,
     BrowserAnimationsModule,
+    MatTabsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-pulse' }),
     // Imports for Stream
     TranslateModule.forRoot(),

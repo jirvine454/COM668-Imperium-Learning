@@ -92,8 +92,12 @@ export class WebService {
         postData.append("stars", review.stars);
 
         let today = new Date();
+        // Have to increase current month by 1 a there is a bug with getMonth() as it is one behind
+        // currenty month, for examplke running getMonth() in March would return 2 which is February
+        let month = today.getMonth();
+        ++month;
         let todayDate = today.getFullYear() + "-" +
-            today.getMonth() + "-" +
+            month + "-" +
             today.getDate();
         postData.append("date", todayDate);
 
@@ -140,25 +144,17 @@ export class WebService {
             'http://localhost:5000/api/v1.0/courses/' + cid, courseData2);
     }
 
-    updateFunny(rid: any, review: any) {
+    updateLike(rid: any, review: any) {
         let newVote = new FormData();
-        newVote.append("funny", review.funny);
+        newVote.append("like", review.like);
 
         return this.http.put(
             'http://localhost:5000/api/v1.0/courses/' + this.courseID + '/reviews/' + rid, newVote);
     }
 
-    updateUseful(rid: any, review: any) {
+    updateDislike(rid: any, review: any) {
         let newVote = new FormData();
-        newVote.append("useful", review.useful);
-
-        return this.http.put(
-            'http://localhost:5000/api/v1.0/courses/' + this.courseID + '/reviews/' + rid, newVote);
-    }
-
-    updateCool(rid: any, review: any) {
-        let newVote = new FormData();
-        newVote.append("cool", review.cool);
+        newVote.append("dislike", review.dislike);
 
         return this.http.put(
             'http://localhost:5000/api/v1.0/courses/' + this.courseID + '/reviews/' + rid, newVote);

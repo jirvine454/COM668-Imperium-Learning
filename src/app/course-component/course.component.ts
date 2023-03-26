@@ -30,10 +30,10 @@ export class CourseComponent implements OnInit {
     voteForm: any;
     currentReviewID: any;
     currentCourseID: any;
-    funny: number = 0;
-    useful: number = 0;
-    cool: number = 0;
+    like: number = 0;
+    dislike: number = 0;
     hide: boolean = false;
+    hideButton: boolean = true;
     activatedRoute: any;
 
     constructor(private webService: WebService,
@@ -183,6 +183,7 @@ export class CourseComponent implements OnInit {
     }
 
     onEditReview(review: any) {
+        this.hideButton = false;
         console.log(review);
         this.reviewForm = this.formBuilder.group({
             name: [review.name, Validators.required],
@@ -212,6 +213,7 @@ export class CourseComponent implements OnInit {
     saveReview() {
         this.webService.updateReview(this.currentReviewID, this.reviewForm.value).subscribe((response: any) => {
             this.reviewForm.reset();
+            this.hideButton = true;
             this.reviews = this.webService.getReviews(
                 this.route.snapshot.params['id']);
         });
@@ -226,54 +228,36 @@ export class CourseComponent implements OnInit {
         });
     }
 
-    onUpdateFunny(review: any) {
+    onUpdateLike(review: any) {
 
-        this.funny = review.funny;
-        ++this.funny;
-        console.log(this.funny);
+        this.like = review.like;
+        ++this.like;
+        console.log(this.like);
         this.currentReviewID = review._id;
 
         this.voteForm = this.formBuilder.group({
-            funny: [this.funny]
+            like: [this.like]
         });
 
-        this.webService.updateFunny(this.currentReviewID, this.voteForm.value).subscribe((response: any) => {
+        this.webService.updateLike(this.currentReviewID, this.voteForm.value).subscribe((response: any) => {
             this.hide = true;
             this.reviews = this.webService.getReviews(
                 this.route.snapshot.params['id']);
         });
     }
 
-    onUpdateUseful(review: any) {
+    onUpdateDislike(review: any) {
 
-        this.useful = review.useful;
-        ++this.useful;
-        console.log(this.useful);
+        this.dislike = review.dislike;
+        ++this.dislike;
+        console.log(this.dislike);
         this.currentReviewID = review._id;
 
         this.voteForm = this.formBuilder.group({
-            useful: [this.useful]
+            dislike: [this.dislike]
         });
 
-        this.webService.updateUseful(this.currentReviewID, this.voteForm.value).subscribe((response: any) => {
-            this.hide = true;
-            this.reviews = this.webService.getReviews(
-                this.route.snapshot.params['id']);
-        });
-    }
-
-    onUpdateCool(review: any) {
-
-        this.cool = review.cool;
-        ++this.cool;
-        console.log(this.cool);
-        this.currentReviewID = review._id;
-
-        this.voteForm = this.formBuilder.group({
-            cool: [this.cool]
-        });
-
-        this.webService.updateCool(this.currentReviewID, this.voteForm.value).subscribe((response: any) => {
+        this.webService.updateDislike(this.currentReviewID, this.voteForm.value).subscribe((response: any) => {
             this.hide = true;
             this.reviews = this.webService.getReviews(
                 this.route.snapshot.params['id']);
