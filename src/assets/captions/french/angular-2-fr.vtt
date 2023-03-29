@@ -1,0 +1,127 @@
+WEBVTT
+
+00:00:02.180 --> 00:00:03.940
+Donc, dans cette vidéo, nous allons ajouter un
+
+00:00:03.940 --> 00:00:06.389
+composant de notre propre à notre application simple.
+
+00:00:06.390 --> 00:00:10.880
+Maintenant, nous savons que ce composant est composé de trois fichiers,
+
+00:00:10.880 --> 00:00:14.869
+c'est un html, un CS S et un tapuscrit.
+
+00:00:14.870 --> 00:00:17.940
+Créons donc un composant pour notre collection de
+
+00:00:17.940 --> 00:00:20.940
+entreprises en créant les fichiers, les entreprises dot
+
+00:00:20.940 --> 00:00:25.370
+composant point html, entreprises point composant point TS
+
+00:00:25.370 --> 00:00:30.520
+et entreprises point composant point CS S maintenant R fichier html
+
+00:00:30.520 --> 00:00:32.150
+sera la sortie du composant.
+
+00:00:32.150 --> 00:00:36.020
+Encore une fois, nous aurons un titre simple. Un élément, nous
+
+00:00:36.020 --> 00:00:38.029
+laissez le fichier de feuille de style vide pour l'instant.
+
+00:00:38.030 --> 00:00:41.740
+Et dans le fichier dactylographié, le plus simple est de
+
+00:00:41.740 --> 00:00:43.280
+copier le contenu de notre
+
+00:00:43.280 --> 00:00:45.009
+fichier dactylographié de composant de point d'application
+
+00:00:47.459 --> 00:00:49.750
+et nous changerons le sélecteur en entreprises
+
+00:00:51.830 --> 00:00:54.340
+ce qui signifie l'URL du modèle
+
+00:00:54.340 --> 00:00:56.110
+et le style de vos rails à assortir.
+
+00:01:00.009 --> 00:01:03.290
+Nous mettrons à jour le nom de la classe et nous supprimerons simplement le
+
+00:01:03.290 --> 00:01:04.410
+contenu de la classe.
+
+00:01:07.589 --> 00:01:11.690
+Maintenant, dans notre fichier html de composant de point d'application, nous allons ajouter un
+
+00:01:11.690 --> 00:01:14.900
+balise business pour injecter la sortie du nouveau composant
+
+00:01:14.900 --> 00:01:16.010
+sur la page Web.
+
+00:01:16.010 --> 00:01:19.720
+Donc, si nous enregistrons ces fichiers et les vérifions dans le navigateur,
+
+00:01:19.720 --> 00:01:21.370
+nous pouvons voir que nous n'avons aucune sortie.
+
+00:01:25.910 --> 00:01:27.639
+Mais si nous affichons une console de navigateur
+
+00:01:27.640 --> 00:01:30.870
+et cliquez dessus.
+
+00:01:30.870 --> 00:01:32.860
+Et différents navigateurs afficheront cela dans un peu
+
+00:01:32.860 --> 00:01:36.330
+façon différente, mais nous devrions être capables de voir la nature de
+
+00:01:36.330 --> 00:01:37.430
+le message d'erreur.
+
+00:01:37.430 --> 00:01:39.430
+Les entreprises ne sont pas un élément connu.
+
+00:01:41.589 --> 00:01:45.040
+Et ce que nous devons faire, c'est enregistrer notre nouveau composant
+
+00:01:45.040 --> 00:01:51.010
+avec l'application maintenant parce que nous avons ajouté notre
+
+00:01:51.010 --> 00:01:54.160
+balise d'entreprises au fichier html du composant dot de l'application.
+
+00:01:54.160 --> 00:01:56.120
+Nous devons importer
+
+00:01:56.120 --> 00:01:58.709
+le composant métier dans le composant application.
+
+00:02:05.099 --> 00:02:09.400
+Toujours dans le module de points d'application du fichier d'application principal, nous avons besoin
+
+00:02:09.400 --> 00:02:11.649
+pour importer le nouveau composant de la même manière.
+
+00:02:17.669 --> 00:02:20.780
+Et nous devons également l'ajouter à notre liste de déclarations
+
+00:02:20.780 --> 00:02:22.919
+à côté du composant d'application existant.
+
+00:02:22.920 --> 00:02:26.820
+Maintenant que nous avons fait cela, nous pouvons revenir au navigateur
+
+00:02:26.820 --> 00:02:28.860
+et nous pouvons voir le rendement de nos nouvelles entreprises
+
+00:02:28.860 --> 00:02:29.929
+composant a été.

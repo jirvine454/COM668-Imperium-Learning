@@ -12,7 +12,7 @@
 </head>
 
 <!-- Hero Header -->
-<section class="mb-12 text-gray-800 bg-imperium-purple">
+<section class="mb-12 text-gray-800 bg-imperium-purple rounded-lg">
     <div class="px-6 py-12 md:px-12 text-center lg:text-left">
         <div class="container mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 flex items-center">
@@ -22,17 +22,27 @@
                         Are You Ready to<br /><span style="color: hsl(173, 70%, 49%)">Become an Instructor?</span>
                     </h1>
                     <p class="text-lg" style="color: hsl(218, 81%, 95%)">
-                        Become an Imperium Learning Instructor today and start publishing unqiue technology courses 
-                        to 1000s of students! Recieve additional administrative privileges to update and delete learning content.
+                        Become an Imperium Learning Instructor today and start publishing unqiue technology courses
+                        to 1000s of students! Recieve additional administrative privileges to update and delete learning
+                        content.
                         Upon becoming an Instructor, view the instructor portal below.
                     </p>
-                    <ng-container *ngIf="authService.isAuthenticated$ | async; else loggedOut">
-                        <button class="btn btn-primary" mat-fab extended color="accent" (click)="authService.logout()">Logout</button>
-                    </ng-container>
-                    <ng-template #loggedOut>
-                        <button class="btn btn-primary" mat-fab extended color="accent" (click)="authService.loginWithRedirect()">Become an
-                            Instructor</button>
-                    </ng-template>
+                    <div>
+                        <a href="" class="
+                        inline-block
+                        py-2
+                        px-7
+                        mt-8
+                        border border-[#E5E7EB]
+                        rounded-full
+                        text-base text-body-color
+                        font-medium
+                        bg-white
+                        text-black
+                        ">
+                        View Other Instructors
+                     </a>
+                    </div>
                 </div>
                 <div class="mb-12 lg:mb-0">
                     <img id="img" src="../assets/images/become_an_instructor.jpg" alt="image" class="w-full" />
@@ -55,16 +65,20 @@
             <div class="rounded-lg shadow-lg h-full block bg-white">
                 <div class="flex justify-center">
                     <div class="p-4 bg-imperium-purple rounded-full shadow-lg inline-block -mt-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white">
-                            <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z" clip-rule="evenodd" />
-                          </svg>                          
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 text-white">
+                            <path fill-rule="evenodd"
+                                d="M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
                 </div>
                 <div class="p-6">
                     <h4 id="h4" class="text-lg text-center font-bold mb-4">Add Courses</h4>
                     <p>
-                        As a certified Imperium Learning Instructor, you have admin privileges in adding a course 
-                        for students to take. Add unique courses that teach different skills and new programming languages. 
+                        As a certified Imperium Learning Instructor, you have admin privileges in adding a course
+                        for students to take. Add unique courses that teach different skills and new programming
+                        languages.
                     </p>
                 </div>
             </div>
@@ -74,17 +88,21 @@
             <div class="rounded-lg shadow-lg h-full block bg-white">
                 <div class="flex justify-center">
                     <div class="p-4 bg-imperium-purple rounded-full shadow-lg inline-block -mt-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white">
-                            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                            <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                          </svg>
-                          
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 text-white">
+                            <path
+                                d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+                            <path
+                                d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                        </svg>
+
                     </div>
                 </div>
                 <div class="p-6">
                     <h4 id="h4" class="text-lg text-center font-semibold mb-4">Update Courses</h4>
                     <p>
-                        Updating Imperium learning courses involves editing existing courses so that they may be updated for the 2023 
+                        Updating Imperium learning courses involves editing existing courses so that they may be updated
+                        for the 2023
                         technology landscape. Update course content, images, lecturer, or difficulty level.
                     </p>
                 </div>
@@ -95,17 +113,21 @@
             <div class="rounded-lg shadow-lg h-full block bg-white">
                 <div class="flex justify-center">
                     <div class="p-4 bg-imperium-purple rounded-full shadow-lg inline-block -mt-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white">
-                            <path fill-rule="evenodd" d="M6.72 5.66l11.62 11.62A8.25 8.25 0 006.72 5.66zm10.56 12.68L5.66 6.72a8.25 8.25 0 0011.62 11.62zM5.105 5.106c3.807-3.808 9.98-3.808 13.788 0 3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788z" clip-rule="evenodd" />
-                          </svg>
-                          
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-6 h-6 text-white">
+                            <path fill-rule="evenodd"
+                                d="M6.72 5.66l11.62 11.62A8.25 8.25 0 006.72 5.66zm10.56 12.68L5.66 6.72a8.25 8.25 0 0011.62 11.62zM5.105 5.106c3.807-3.808 9.98-3.808 13.788 0 3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788z"
+                                clip-rule="evenodd" />
+                        </svg>
+
                     </div>
                 </div>
                 <div class="p-6">
                     <h4 id="h4" class="text-lg text-center font-semibold mb-4">Delete Courses</h4>
                     <p>
-                        Deleting Imperium Learning courses permanently removes it form the Learning Experience Platform. Perhaps a 
-                        course is no longer available, or had been updated to a new version of a course. 
+                        Deleting Imperium Learning courses permanently removes it form the Learning Experience Platform.
+                        Perhaps a
+                        course is no longer available, or had been updated to a new version of a course.
                     </p>
                 </div>
             </div>
@@ -123,12 +145,15 @@
     </div>
 
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div *ngFor="let instructor of instructor_list | async" class="w-full bg-slate-200 rounded-lg p-6 flex flex-col justify-center items-center">
-                <img class="object-center object-cover rounded-full h-36 w-36" src="{{instructor.instructor_image}}" alt="photo">
-            <div class="mt-6">  
+        <div *ngFor="let instructor of instructor_list | async"
+            class="w-full bg-slate-200 rounded-lg p-6 flex flex-col justify-center items-center">
+            <img class="object-center object-cover rounded-full h-36 w-36" src="{{instructor.instructor_image}}"
+                alt="photo">
+            <div class="mt-6">
                 <p class="text-xl text-center text-gray-700 font-bold">{{instructor.name}}</p>
                 <p id="subject" class="text-base text-center text-imperium-gold font-normal">{{instructor.subject}}</p>
-                <p class="text-base text-justify text-black font-normal"><i>"{{instructor.teaching_style_quote}}"</i></p>
+                <p class="text-base text-justify text-black font-normal"><i>"{{instructor.teaching_style_quote}}"</i>
+                </p>
             </div>
         </div>
     </div>

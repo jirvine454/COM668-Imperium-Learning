@@ -119,3 +119,11 @@ p {
 #addCourse {
   margin-left: -15px;
 }
+
+#btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-color: black;
+  color: black
+}

@@ -27,6 +27,7 @@
     "@types/node": "^18.14.6",
     "angular-mentions": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "flag-icons": "^6.6.6",
     "jquery": "^3.6.4",
     "jwt-decode": "^3.1.2",
     "ngx-popperjs": "^13.3.0",
@@ -35,6 +36,7 @@
     "rxjs": "~7.5.0",
     "stream-chat": "^8.4.1",
     "stream-chat-angular": "^4.16.0",
+    "tailwindcss-animation-delay": "^1.0.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

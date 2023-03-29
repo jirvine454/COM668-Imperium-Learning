@@ -1,0 +1,210 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.180
+
+
+
+00:00:02.180 --> 00:00:03.940
+So in this video, we'll add a
+
+
+00:00:03.940 --> 00:00:06.389
+component of our own to our simple application.
+
+
+00:00:06.390 --> 00:00:10.880
+Now, we know that component is made up of three files,
+
+
+00:00:10.880 --> 00:00:14.869
+that's one html, one CS S and one typescript.
+
+
+00:00:14.870 --> 00:00:17.940
+So let's create a component for our collection of
+
+
+00:00:17.940 --> 00:00:20.940
+businesses by creating the files, businesses dot
+
+
+00:00:20.940 --> 00:00:25.370
+component dot html, businesses dot component dot T S
+
+
+00:00:25.370 --> 00:00:30.520
+and businesses dot component dot CS S now R html file
+
+
+00:00:30.520 --> 00:00:32.150
+will be the output of the component.
+
+
+00:00:32.150 --> 00:00:36.020
+So again, we'll have a simple heading. One element, we
+
+
+00:00:36.020 --> 00:00:38.029
+leave the stylesheet file empty for now.
+
+
+00:00:38.030 --> 00:00:41.740
+And in the typescript file, the easiest thing to do is to
+
+
+00:00:41.740 --> 00:00:43.280
+copy the contents of our
+
+
+00:00:43.280 --> 00:00:45.009
+app dot component typescript file
+
+
+00:00:45.010 --> 00:00:47.460
+
+
+
+00:00:47.459 --> 00:00:49.750
+and we'll change the selector to businesses
+
+
+00:00:49.750 --> 00:00:51.830
+
+
+
+00:00:51.830 --> 00:00:54.340
+which means the template URL
+
+
+00:00:54.340 --> 00:00:56.110
+and the style your rails to match.
+
+
+00:00:56.110 --> 00:01:00.010
+
+
+
+00:01:00.009 --> 00:01:03.290
+We'll update the class name and we'll just remove the
+
+
+00:01:03.290 --> 00:01:04.410
+contents of the class.
+
+
+00:01:04.410 --> 00:01:07.590
+
+
+
+00:01:07.589 --> 00:01:11.690
+Now, in our app dot component html file, we'll add a
+
+
+00:01:11.690 --> 00:01:14.900
+businesses tag to inject the output of the new component
+
+
+00:01:14.900 --> 00:01:16.010
+onto the web page.
+
+
+00:01:16.010 --> 00:01:19.720
+So if we save those files and check it out in the browser,
+
+
+00:01:19.720 --> 00:01:21.370
+we can see we've got no output.
+
+
+00:01:21.370 --> 00:01:25.910
+
+
+
+00:01:25.910 --> 00:01:27.639
+But if we display a browser console
+
+
+00:01:27.640 --> 00:01:30.870
+and click through that.
+
+
+00:01:30.870 --> 00:01:32.860
+And different browsers will display this in a slightly
+
+
+00:01:32.860 --> 00:01:36.330
+different way, but we should be able to see the nature of
+
+
+00:01:36.330 --> 00:01:37.430
+the error message.
+
+
+00:01:37.430 --> 00:01:39.430
+Businesses is not a known element.
+
+
+00:01:39.430 --> 00:01:41.590
+
+
+
+00:01:41.589 --> 00:01:45.040
+And what we need to do is register our new component
+
+
+00:01:45.040 --> 00:01:51.010
+with the application now because we added our
+
+
+00:01:51.010 --> 00:01:54.160
+businesses tag to the app dot component html file.
+
+
+00:01:54.160 --> 00:01:56.120
+We need to import
+
+
+00:01:56.120 --> 00:01:58.709
+the business component into the app component.
+
+
+00:01:58.710 --> 00:02:05.100
+
+
+
+00:02:05.099 --> 00:02:09.400
+Also in the main application file app dot module, we need
+
+
+00:02:09.400 --> 00:02:11.649
+to import the new component in the same way.
+
+
+00:02:11.650 --> 00:02:17.670
+
+
+
+00:02:17.669 --> 00:02:20.780
+And we also need to add it to our declarations list
+
+
+00:02:20.780 --> 00:02:22.919
+alongside the existing app component.
+
+
+00:02:22.920 --> 00:02:26.820
+Now that we've done that we can go back to the browser
+
+
+00:02:26.820 --> 00:02:28.860
+and we can see the output of our new businesses
+
+
+00:02:28.860 --> 00:02:29.929
+component has been.
+
+
+00:02:29.930 --> 00:02:31.930
+
+
+

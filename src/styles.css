@@ -3,6 +3,7 @@
 @import "~stream-chat-angular/src/assets/styles/v2/css/index.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 @tailwind base;
 @tailwind components;

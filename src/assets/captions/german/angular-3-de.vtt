@@ -1,0 +1,145 @@
+WEBVTT
+
+00:00:02.750 --> 00:00:06.240
+Deshalb entwickeln wir in diesem Video unsere erste Anwendung weiter
+
+00:00:06.240 --> 00:00:08.860
+eckig, indem Sie einige Daten hinzufügen
+
+00:00:08.859 --> 00:00:10.340
+und sehen, wie wir es verarbeiten können.
+
+00:00:10.340 --> 00:00:14.170
+Gehen wir also zu unserer Geschäftskomponenten-Typoskriptdatei.
+
+00:00:14.170 --> 00:00:17.559
+Ich werde eine Struktur namens Geschäftsliste erstellen.
+
+00:00:17.560 --> 00:00:21.960
+Und die Geschäftsliste wird eine Liste von Objekten sein, in denen
+
+00:00:21.960 --> 00:00:24.600
+Jedes Objekt gibt ein Geschäft von an
+
+00:00:24.600 --> 00:00:27.500
+sein Name Stadt und Anzahl der Bewertungen.
+
+00:00:29.819 --> 00:00:32.610
+Und wir haben diese Feldnamen ausgewählt, um sie abzugleichen
+
+00:00:32.610 --> 00:00:34.400
+drei der Felder in der Datenbank
+
+00:00:34.400 --> 00:00:36.270
+die wir in der Demonstrationsanwendung verwenden.
+
+00:00:36.270 --> 00:00:39.689
+Also kopieren wir das und fügen es noch ein paar Mal ein
+
+00:00:45.549 --> 00:00:49.500
+und wir ändern das 2. und 3. Objekt so, dass die
+
+00:00:49.500 --> 00:00:53.540
+Der Name der Stadt und die Werte für die Anzahl der Rezensionen sind unterschiedlich
+
+00:00:56.720 --> 00:00:59.400
+und Sie können hier und Sie beliebige Werte verwenden
+
+00:00:59.400 --> 00:01:00.500
+kann beliebig viele Objekte haben
+
+00:01:00.500 --> 00:01:02.349
+Sie in der Geschäftsliste mögen.
+
+00:01:06.459 --> 00:01:09.440
+Nun, da unsere Geschäftsliste erstellt wurde, mal sehen
+
+00:01:09.440 --> 00:01:13.190
+wie wir darauf in der HTML-Datei zugreifen können, um diese einzufügen
+
+00:01:13.190 --> 00:01:14.629
+Werte auf die Webseite.
+
+00:01:14.630 --> 00:01:20.090
+Als erstes fügen wir dem Bericht ein Überschrift-Zwei-Element hinzu
+
+00:01:20.090 --> 00:01:22.069
+wie viele Unternehmen sind im Verzeichnis.
+
+00:01:22.070 --> 00:01:26.230
+Und wir können das tun, indem wir die Längeneigenschaft von melden
+
+00:01:26.230 --> 00:01:27.470
+das Geschäftslistenobjekt
+
+00:01:30.190 --> 00:01:34.040
+ohne einen zweiten Kopf und zwei Elemente, um das zu melden
+
+00:01:34.040 --> 00:01:36.089
+Name des ersten Unternehmens in der Sammlung.
+
+00:01:38.129 --> 00:01:41.300
+Das erste Unternehmen wird also auf Listenplatz Null stehen.
+
+00:01:41.300 --> 00:01:46.180
+Es sagt Geschäftslistenelement Null. Und es ist der Name
+
+00:01:46.180 --> 00:01:47.089
+Eigentum davon.
+
+00:01:52.160 --> 00:01:53.449
+Und wir können im Browser sehen
+
+00:01:53.450 --> 00:01:55.690
+wie diese Werte abgerufen werden.
+
+00:01:55.690 --> 00:01:59.920
+Nun, ein sehr starkes Element von Eckig ist, was ist
+
+00:01:59.920 --> 00:02:00.730
+bekannt als Direktiven.
+
+00:02:00.730 --> 00:02:03.540
+Und das sind Strukturen, die ein Element von hinzufügen
+
+00:02:03.540 --> 00:02:05.050
+Verarbeitung zum HTML.
+
+00:02:05.050 --> 00:02:09.640
+Das erste davon, das wir uns ansehen, heißt NG 4 und es
+
+00:02:09.640 --> 00:02:11.960
+verhält sich ein bisschen wie eine for-Schleife.
+
+00:02:11.960 --> 00:02:13.000
+Und was es tun wird
+
+00:02:13.000 --> 00:02:15.020
+wird über die Geschäftsliste iteriert.
+
+00:02:15.020 --> 00:02:18.720
+Und für jede Iteration den aktuellen Wert für das Unternehmen
+
+00:02:18.720 --> 00:02:21.410
+Liste wird im variablen Geschäft geführt.
+
+00:02:21.410 --> 00:02:27.050
+Also wird NG 4 in diesem Fall drei Entwicklungen erstellen, eine
+
+00:02:27.050 --> 00:02:28.710
+für jedes Element in der Geschäftsliste.
+
+00:02:28.710 --> 00:02:32.860
+Und innerhalb des div haben wir einen Absatz, der die berichtet
+
+00:02:32.860 --> 00:02:35.580
+Nennen Sie die Stadt und überprüfen Sie aktuelle Immobilien.
+
+00:02:38.550 --> 00:02:41.890
+Und wenn wir das speichern und wieder in den Browser schauen, wir
+
+00:02:41.890 --> 00:02:44.220
+können sehen, wie diese Werte extrahiert wurden und sind
+
+00:02:44.220 --> 00:02:44.899
+berichtet über die

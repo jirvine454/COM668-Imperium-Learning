@@ -1,0 +1,234 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.750
+
+
+
+00:00:02.750 --> 00:00:06.240
+So in this video, we further develop our first application in
+
+
+00:00:06.240 --> 00:00:08.860
+angular by adding some data
+
+
+00:00:08.859 --> 00:00:10.340
+and seeing how we can process it.
+
+
+00:00:10.340 --> 00:00:14.170
+So let's go to our businesses component typescript file.
+
+
+00:00:14.170 --> 00:00:17.559
+I'm gonna create a structure called business list.
+
+
+00:00:17.560 --> 00:00:21.960
+And business list is going to be a list of objects where
+
+
+00:00:21.960 --> 00:00:24.600
+each object specifies a business by
+
+
+00:00:24.600 --> 00:00:27.500
+its name city and review count.
+
+
+00:00:27.500 --> 00:00:29.820
+
+
+
+00:00:29.819 --> 00:00:32.610
+And we've chosen these field names to match up with
+
+
+00:00:32.610 --> 00:00:34.400
+three of the fields in the database
+
+
+00:00:34.400 --> 00:00:36.270
+that we use in the demonstration application.
+
+
+00:00:36.270 --> 00:00:39.689
+So let's copy that and paste it in a couple of times more
+
+
+00:00:39.690 --> 00:00:45.550
+
+
+
+00:00:45.549 --> 00:00:49.500
+and we'll change the 2nd and 3rd objects so that the
+
+
+00:00:49.500 --> 00:00:53.540
+name city and review count values are different
+
+
+00:00:53.540 --> 00:00:56.720
+
+
+
+00:00:56.720 --> 00:00:59.400
+and you can use whatever values you want here and you
+
+
+00:00:59.400 --> 00:01:00.500
+can have as many objects as
+
+
+00:01:00.500 --> 00:01:02.349
+you like inside the business list.
+
+
+00:01:02.350 --> 00:01:06.460
+
+
+
+00:01:06.459 --> 00:01:09.440
+So now that our business list has been created, let's see
+
+
+00:01:09.440 --> 00:01:13.190
+how we can access it in the html file to inject those
+
+
+00:01:13.190 --> 00:01:14.629
+values onto the web page.
+
+
+00:01:14.630 --> 00:01:20.090
+So first of all, we'll add a heading two element to report
+
+
+00:01:20.090 --> 00:01:22.069
+how many businesses are in the directory.
+
+
+00:01:22.070 --> 00:01:26.230
+And we can do that by reporting the length property of
+
+
+00:01:26.230 --> 00:01:27.470
+the business list object
+
+
+00:01:27.470 --> 00:01:30.190
+
+
+
+00:01:30.190 --> 00:01:34.040
+without a second head and two elements to report the
+
+
+00:01:34.040 --> 00:01:36.089
+name of the first business in the collection.
+
+
+00:01:36.090 --> 00:01:38.130
+
+
+
+00:01:38.129 --> 00:01:41.300
+So the first business will be at list position zero.
+
+
+00:01:41.300 --> 00:01:46.180
+It says business list element zero. And it's the name
+
+
+00:01:46.180 --> 00:01:47.089
+property of that.
+
+
+00:01:47.090 --> 00:01:52.160
+
+
+
+00:01:52.160 --> 00:01:53.449
+And we can see in the browser
+
+
+00:01:53.450 --> 00:01:55.690
+how those values are being retrieved.
+
+
+00:01:55.690 --> 00:01:59.920
+Now, a very powerful element of angular is what are
+
+
+00:01:59.920 --> 00:02:00.730
+known as directives.
+
+
+00:02:00.730 --> 00:02:03.540
+And these are structures that add an element of
+
+
+00:02:03.540 --> 00:02:05.050
+processing to the html.
+
+
+00:02:05.050 --> 00:02:09.640
+The first one of these we look at is called NG 4 and it
+
+
+00:02:09.640 --> 00:02:11.960
+behaves a bit kind of like a for loop.
+
+
+00:02:11.960 --> 00:02:13.000
+And what it's going to do
+
+
+00:02:13.000 --> 00:02:15.020
+is iterate across the business list.
+
+
+00:02:15.020 --> 00:02:18.720
+And for each iteration, the current value for the business
+
+
+00:02:18.720 --> 00:02:21.410
+list will be held in the variable business.
+
+
+00:02:21.410 --> 00:02:27.050
+So NG 4 in this case will create three developments, one
+
+
+00:02:27.050 --> 00:02:28.710
+for each element in the business list.
+
+
+00:02:28.710 --> 00:02:32.860
+And inside the div we have a paragraph that reports the
+
+
+00:02:32.860 --> 00:02:35.580
+name city and review current properties.
+
+
+00:02:35.580 --> 00:02:38.550
+
+
+
+00:02:38.550 --> 00:02:41.890
+And if we save that and look into the browser again, we
+
+
+00:02:41.890 --> 00:02:44.220
+can see how those values have been extracted and are
+
+
+00:02:44.220 --> 00:02:44.899
+reported on the
+
+
+00:02:44.900 --> 00:02:46.930
+
+
+

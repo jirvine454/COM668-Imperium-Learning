@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ThemeService } from 'stream-chat-angular';
+import { AuthService as env } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-nav-component',
@@ -13,7 +14,8 @@ export class NavComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    public authService: env,
   ) {}
 
   ngOnInit(): void {}

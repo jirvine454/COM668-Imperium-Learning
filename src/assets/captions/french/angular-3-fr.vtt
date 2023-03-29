@@ -1,0 +1,145 @@
+WEBVTT
+
+00:00:02.750 --> 00:00:06.240
+Ainsi, dans cette vidéo, nous développons davantage notre première application en
+
+00:00:06.240 --> 00:00:08.860
+angulaire en ajoutant des données
+
+00:00:08.859 --> 00:00:10.340
+et voir comment nous pouvons le traiter.
+
+00:00:10.340 --> 00:00:14.170
+Passons donc au fichier dactylographié de nos composants métiers.
+
+00:00:14.170 --> 00:00:17.559
+Je vais créer une structure appelée liste d'entreprises.
+
+00:00:17.560 --> 00:00:21.960
+Et la liste d'affaires va être une liste d'objets où
+
+00:00:21.960 --> 00:00:24.600
+chaque objet spécifie une entreprise par
+
+00:00:24.600 --> 00:00:27.500
+son nom, sa ville et son nombre d'avis.
+
+00:00:29.819 --> 00:00:32.610
+Et nous avons choisi ces noms de champs pour les faire correspondre
+
+00:00:32.610 --> 00:00:34.400
+trois des champs de la base de données
+
+00:00:34.400 --> 00:00:36.270
+que nous utilisons dans l'application de démonstration.
+
+00:00:36.270 --> 00:00:39.689
+Alors copions cela et collons-le plusieurs fois
+
+00:00:45.549 --> 00:00:49.500
+et nous allons changer les 2ème et 3ème objets pour que le
+
+00:00:49.500 --> 00:00:53.540
+la ville du nom et les valeurs du nombre d'avis sont différentes
+
+00:00:56.720 --> 00:00:59.400
+et vous pouvez utiliser toutes les valeurs que vous voulez ici et vous
+
+00:00:59.400 --> 00:01:00.500
+peut avoir autant d'objets que
+
+00:01:00.500 --> 00:01:02.349
+vous aimez dans la liste des entreprises.
+
+00:01:06.459 --> 00:01:09.440
+Maintenant que notre liste d'entreprises a été créée, voyons
+
+00:01:09.440 --> 00:01:13.190
+comment nous pouvons y accéder dans le fichier html pour injecter ceux
+
+00:01:13.190 --> 00:01:14.629
+valeurs sur la page Web.
+
+00:01:14.630 --> 00:01:20.090
+Donc, tout d'abord, nous allons ajouter un élément de titre deux pour signaler
+
+00:01:20.090 --> 00:01:22.069
+combien d'entreprises sont dans le répertoire.
+
+00:01:22.070 --> 00:01:26.230
+Et nous pouvons le faire en signalant la propriété de longueur de
+
+00:01:26.230 --> 00:01:27.470
+l'objet liste d'affaires
+
+00:01:30.190 --> 00:01:34.040
+sans seconde tête et deux éléments pour signaler le
+
+00:01:34.040 --> 00:01:36.089
+nom de la première entreprise de la collection.
+
+00:01:38.129 --> 00:01:41.300
+Ainsi, la première entreprise sera à la position zéro de la liste.
+
+00:01:41.300 --> 00:01:46.180
+Il indique l'élément zéro de la liste d'affaires. Et c'est le nom
+
+00:01:46.180 --> 00:01:47.089
+propriété de cela.
+
+00:01:52.160 --> 00:01:53.449
+Et nous pouvons voir dans le navigateur
+
+00:01:53.450 --> 00:01:55.690
+comment ces valeurs sont récupérées.
+
+00:01:55.690 --> 00:01:59.920
+Maintenant, un élément très puissant d'angle est ce que sont
+
+00:01:59.920 --> 00:02:00.730
+appelées directives.
+
+00:02:00.730 --> 00:02:03.540
+Et ce sont des structures qui ajoutent un élément de
+
+00:02:03.540 --> 00:02:05.050
+traitement au format html.
+
+00:02:05.050 --> 00:02:09.640
+Le premier d'entre eux que nous examinons s'appelle NG 4 et il
+
+00:02:09.640 --> 00:02:11.960
+se comporte un peu comme une boucle for.
+
+00:02:11.960 --> 00:02:13.000
+Et ce que ça va faire
+
+00:02:13.000 --> 00:02:15.020
+itère dans la liste d'entreprises.
+
+00:02:15.020 --> 00:02:18.720
+Et pour chaque itération, la valeur actuelle pour l'entreprise
+
+00:02:18.720 --> 00:02:21.410
+liste aura lieu dans l'entreprise variable.
+
+00:02:21.410 --> 00:02:27.050
+Donc NG 4 dans ce cas va créer trois développements, un
+
+00:02:27.050 --> 00:02:28.710
+pour chaque élément de la liste d'affaires.
+
+00:02:28.710 --> 00:02:32.860
+Et à l'intérieur de la div, nous avons un paragraphe qui rapporte le
+
+00:02:32.860 --> 00:02:35.580
+nommer la ville et passer en revue les propriétés actuelles.
+
+00:02:38.550 --> 00:02:41.890
+Et si nous enregistrons cela et examinons à nouveau le navigateur, nous
+
+00:02:41.890 --> 00:02:44.220
+peut voir comment ces valeurs ont été extraites et sont
+
+00:02:44.220 --> 00:02:44.899
+signalé sur le

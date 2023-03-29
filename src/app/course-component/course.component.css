@@ -88,20 +88,6 @@ p {
     border: 1px solid black;
 }
 
-#btn {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #005F50;
-    border-color: black;
-}
-
-#btn:hover {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #003300;
-    border-color: black;
-}
-
 h1 {
     margin-left: 300px;
     margin-top: 20px;
@@ -127,4 +113,47 @@ h1 {
 
 #star {
     color: #B09A70;
+}
+
+#btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #005F50;
+    border-color: black;
+}
+
+#btn2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: red;
+    border-color: black;
+}
+
+#btn:hover {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #003300;
+    border-color: black;
+}
+
+#btn2:hover {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: darkred;
+    border-color: black; 
+}
+
+#delete {
+    background-color: red;
+    color: black;
+    border: 1px solid black;
+    width: 70px;
+    text-align: center;
+    display: inline-block;
+}
+
+#edit {
+    background-color: lightgreen;
+    color: black;
+    border: 1px solid black;
 }

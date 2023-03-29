@@ -36,6 +36,10 @@ export class CourseComponent implements OnInit {
     hideButton: boolean = true;
     activatedRoute: any;
 
+    hideTranscriptFeature1: boolean = true;
+    hideTranscriptFeature2: boolean = true;
+    hideTranscriptFeature3: boolean = true;
+
     constructor(private webService: WebService,
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
@@ -85,6 +89,10 @@ export class CourseComponent implements OnInit {
 
         this.reviews = this.webService.getReviews(
             this.route.snapshot.params['id']);
+
+        this.hideTranscriptFeature1 = true;
+        this.hideTranscriptFeature2 = true;
+        this.hideTranscriptFeature3 = true;
     }
 
     //------------------------------------------------------------------------------------------------------
@@ -309,5 +317,29 @@ export class CourseComponent implements OnInit {
 
     openSnackBar(message: string, action?: string) {
         this.snackBar.open(message, action, { duration: 5 * 1000 });
+    }
+
+    showTranscript1() {
+        this.hideTranscriptFeature1 = false;
+    }
+
+    hideTranscript1() {
+        this.hideTranscriptFeature1 = true;
+    }
+
+    showTranscript2() {
+        this.hideTranscriptFeature2 = false;
+    }
+
+    hideTranscript2() {
+        this.hideTranscriptFeature2 = true;
+    }
+
+    showTranscript3() {
+        this.hideTranscriptFeature3 = false;
+    }
+
+    hideTranscript3() {
+        this.hideTranscriptFeature3 = true;
     }
 }

@@ -1,0 +1,163 @@
+WEBVTT
+
+00:00:02.040 --> 00:00:06.210
+In diesem Video erstellen wir unsere erste Angleranwendung und
+
+00:00:06.210 --> 00:00:07.489
+Untersuchen Sie seine Struktur.
+
+00:00:07.490 --> 00:00:12.680
+Navigieren wir also in einem Befehlsfenster zum Desktop
+
+00:00:14.989 --> 00:00:18.440
+und wir erstellen die neue Anwendung mit dem Befehl NG
+
+00:00:18.440 --> 00:00:21.399
+U mit D eins als Name der Anwendung.
+
+00:00:21.400 --> 00:00:23.470
+Und wenn wir gefragt werden
+
+00:00:23.470 --> 00:00:26.150
+Bei Fragen akzeptieren wir einfach den Standardwert.
+
+00:00:26.150 --> 00:00:29.280
+Aber im Gegenzug, und das könnte doch eine ganze Weile dauern
+
+00:00:29.280 --> 00:00:30.479
+schließlich wird es abgeschlossen.
+
+00:00:34.470 --> 00:00:37.509
+Jetzt können wir sehen, dass der D1-Ordner erstellt wurde
+
+00:00:40.069 --> 00:00:44.100
+also können wir hinein navigieren und das können wir eigentlich schon
+
+00:00:44.100 --> 00:00:47.500
+Führen Sie die Anwendung mit dem Befehl NG serve aus.
+
+00:00:47.500 --> 00:00:52.660
+Standardmäßig wird also eine vollständig laufende Angler-Anwendung erstellt
+
+00:00:52.659 --> 00:00:55.800
+was, wenn es läuft, wir inspizieren können, indem wir das einsetzen
+
+00:00:55.800 --> 00:00:59.110
+Browser auf lokalem Host und Port 4200
+
+00:01:02.880 --> 00:01:05.050
+und wir können die Standardanwendung im Browser sehen.
+
+00:01:10.040 --> 00:01:11.849
+Schauen wir uns nun die Codestruktur an.
+
+00:01:11.850 --> 00:01:16.430
+Zunächst schauen wir uns den Quellordner an
+
+00:01:21.529 --> 00:01:24.300
+wo wir den Dateiindexpunkt html sehen.
+
+00:01:28.599 --> 00:01:32.990
+Abgesehen von diesem Tag handelt es sich um eine ziemlich standardmäßige HTML-Vorlage.
+
+00:01:32.989 --> 00:01:34.639
+was wir vorher noch nicht gesehen haben.
+
+00:01:34.640 --> 00:01:39.460
+Aber dies ist unser erstes Beispiel einer eckigen Komponente
+
+00:01:39.459 --> 00:01:40.900
+wo die Komponente die Hauptsache ist
+
+00:01:40.900 --> 00:01:43.190
+Baustein einer Angleranwendung.
+
+00:01:43.190 --> 00:01:46.980
+Jetzt befindet sich der gesamte Quellcode der Komponenten im APP-Sub
+
+00:01:46.980 --> 00:01:48.040
+Ordner der Quelle.
+
+00:01:48.040 --> 00:01:53.850
+Schauen wir uns zunächst die APP-Komponente dot TS-Datei an
+
+00:01:53.850 --> 00:01:57.400
+hat den Selektor als App-Punktwurzel angegeben, die dem Tag entspricht
+
+00:01:57.400 --> 00:01:59.449
+verwendet im index bei html.
+
+00:02:03.849 --> 00:02:07.530
+Also überall dort, wo wir das Appro-Tag und den Gruppenwillen sehen
+
+00:02:07.530 --> 00:02:10.259
+die Ausgabe von der Appro-Komponente injizieren.
+
+00:02:10.260 --> 00:02:14.790
+In dieser Komponente wird nun eine Variable namens title festgelegt
+
+00:02:14.790 --> 00:02:15.979
+auf den Wert D eins.
+
+00:02:15.980 --> 00:02:21.140
+Und wenn Sie sich die HTML-Datei der Komponenten ansehen, finden wir die
+
+00:02:21.140 --> 00:02:23.280
+Code, der diesen Standardwert angibt
+
+00:02:23.280 --> 00:02:24.699
+Seite, die im Browser erscheint.
+
+00:02:28.449 --> 00:02:32.020
+Jetzt werfen wir den ganzen Code weg und ersetzen ihn
+
+00:02:32.020 --> 00:02:33.460
+mit einem viel einfacheren Beispiel.
+
+00:02:33.460 --> 00:02:37.560
+Es hat einen Kopf in einem Element mit einer Willkommensnachricht
+
+00:02:37.560 --> 00:02:40.270
+die den Wert dieser Titelvariablen verwendet.
+
+00:02:42.520 --> 00:02:47.870
+Wenn wir das jetzt sehen und zurückgehen und den Browser überprüfen,
+
+00:02:47.869 --> 00:02:50.680
+Wir können sehen, dass wir die Nachricht erhalten, wenn es aktualisiert wird.
+
+00:02:50.680 --> 00:02:54.039
+Willkommen bei D 1 oder D1 war der Werttitel
+
+00:02:56.539 --> 00:02:58.310
+nochmal. Nur um zu zeigen, wie das funktioniert.
+
+00:02:58.310 --> 00:03:00.640
+Wir gehen zurück und ändern die Nachricht, um Willkommen zu sagen
+
+00:03:00.640 --> 00:03:01.630
+zu meinem D eins.
+
+00:03:01.630 --> 00:03:06.280
+Und wir können sehen, dass der Browser jetzt bereits aktualisiert wurde
+
+00:03:06.280 --> 00:03:08.559
+sowie die Typoskript- und HTML-Dateien.
+
+00:03:08.560 --> 00:03:12.500
+Eine Komponente kann auch eine Stylesheet-Datei haben.
+
+00:03:12.500 --> 00:03:18.690
+Lassen Sie uns also eine CS S-Regel für den Kopf in einem Element definieren
+
+00:03:18.690 --> 00:03:21.170
+und wir setzen die Textfarbe auf Rot und den Hintergrund
+
+00:03:21.170 --> 00:03:25.230
+Farbe wieder gelb, wenn wir das speichern und einchecken
+
+00:03:25.230 --> 00:03:28.360
+Browser können wir jetzt ein Element unserer Überschrift sehen
+
+00:03:28.360 --> 00:03:29.720
+in diesem Stil definiert.

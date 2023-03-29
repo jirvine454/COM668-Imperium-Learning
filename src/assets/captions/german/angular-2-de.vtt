@@ -1,0 +1,127 @@
+WEBVTT
+
+00:00:02.180 --> 00:00:03.940
+In diesem Video fügen wir also eine hinzu
+
+00:00:03.940 --> 00:00:06.389
+Komponente unserer eigenen zu unserer einfachen Anwendung.
+
+00:00:06.390 --> 00:00:10.880
+Jetzt wissen wir, dass diese Komponente aus drei Dateien besteht,
+
+00:00:10.880 --> 00:00:14.869
+das ist ein HTML, ein CS S und ein Typoskript.
+
+00:00:14.870 --> 00:00:17.940
+Lassen Sie uns also eine Komponente für unsere Sammlung von erstellen
+
+00:00:17.940 --> 00:00:20.940
+Unternehmen durch Erstellen der Dateien, Unternehmen dot
+
+00:00:20.940 --> 00:00:25.370
+Komponente Punkt HTML, Unternehmen Punkt Komponente Punkt TS
+
+00:00:25.370 --> 00:00:30.520
+und Unternehmen Punktkomponente Punkt CS S jetzt R HTML-Datei
+
+00:00:30.520 --> 00:00:32.150
+wird die Ausgabe der Komponente sein.
+
+00:00:32.150 --> 00:00:36.020
+Also haben wir wieder eine einfache Überschrift. Ein Element, wir
+
+00:00:36.020 --> 00:00:38.029
+Lassen Sie die Stylesheet-Datei vorerst leer.
+
+00:00:38.030 --> 00:00:41.740
+Und in der Typoskript-Datei ist das am einfachsten zu tun
+
+00:00:41.740 --> 00:00:43.280
+Kopieren Sie den Inhalt unserer
+
+00:00:43.280 --> 00:00:45.009
+Typoskriptdatei der App-Punktkomponente
+
+00:00:47.459 --> 00:00:49.750
+und wir ändern den Selektor zu Unternehmen
+
+00:00:51.830 --> 00:00:54.340
+was die Vorlagen-URL bedeutet
+
+00:00:54.340 --> 00:00:56.110
+und den Stil, der zu Ihren Schienen passt.
+
+00:01:00.009 --> 00:01:03.290
+Wir aktualisieren den Klassennamen und entfernen einfach die
+
+00:01:03.290 --> 00:01:04.410
+Inhalt der Klasse.
+
+00:01:07.589 --> 00:01:11.690
+Jetzt fügen wir in unserer HTML-Datei der App-Punktkomponente eine hinzu
+
+00:01:11.690 --> 00:01:14.900
+business-Tag, um die Ausgabe der neuen Komponente einzufügen
+
+00:01:14.900 --> 00:01:16.010
+auf die Webseite.
+
+00:01:16.010 --> 00:01:19.720
+Wenn wir also diese Dateien speichern und im Browser auschecken,
+
+00:01:19.720 --> 00:01:21.370
+Wir können sehen, dass wir keine Ausgabe haben.
+
+00:01:25.910 --> 00:01:27.639
+Aber wenn wir eine Browserkonsole anzeigen
+
+00:01:27.640 --> 00:01:30.870
+und klick dich durch.
+
+00:01:30.870 --> 00:01:32.860
+Und verschiedene Browser zeigen dies leicht an
+
+00:01:32.860 --> 00:01:36.330
+anders, aber wir sollten in der Lage sein, die Natur von zu sehen
+
+00:01:36.330 --> 00:01:37.430
+die Fehlermeldung.
+
+00:01:37.430 --> 00:01:39.430
+Unternehmen ist kein bekanntes Element.
+
+00:01:41.589 --> 00:01:45.040
+Und was wir tun müssen, ist unsere neue Komponente zu registrieren
+
+00:01:45.040 --> 00:01:51.010
+mit der anwendung jetzt, weil wir unsere hinzugefügt haben
+
+00:01:51.010 --> 00:01:54.160
+business-Tag in die HTML-Datei der App-Punktkomponente.
+
+00:01:54.160 --> 00:01:56.120
+Wir müssen importieren
+
+00:01:56.120 --> 00:01:58.709
+die Business-Komponente in die App-Komponente.
+
+00:02:05.099 --> 00:02:09.400
+Auch im Hauptanwendungsdatei-App-Punktmodul benötigen wir
+
+00:02:09.400 --> 00:02:11.649
+um die neue Komponente auf die gleiche Weise zu importieren.
+
+00:02:17.669 --> 00:02:20.780
+Und wir müssen es auch zu unserer Deklarationsliste hinzufügen
+
+00:02:20.780 --> 00:02:22.919
+neben der bestehenden App-Komponente.
+
+00:02:22.920 --> 00:02:26.820
+Nachdem wir das erledigt haben, können wir zum Browser zurückkehren
+
+00:02:26.820 --> 00:02:28.860
+und wir können die Ergebnisse unserer neuen Unternehmen sehen
+
+00:02:28.860 --> 00:02:29.929
+Komponente wurde.
