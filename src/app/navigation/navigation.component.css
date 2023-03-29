@@ -1,0 +1,36 @@
+.active-link {
+    @apply underline;
+  }
+  
+  img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  #h6 {
+    font-style: italic;
+    color: white;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+  
+  #instructorLogin {
+    margin-left: 20px;
+    background-color: #B09A70;
+    border-color: black;
+    color: white;
+  }
+  
+  #standardLogout {
+    margin-left: 120px;
+    background-color: white;
+    border-color: black;
+    color: black;
+  }
+  
+  #profile-pic {
+    margin-top: 4px;
+    border-radius: 50%;
+    border-color: black;
+    border-width: 1px;
+  }

@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesComponent } from './courses-component/courses.component';
+import { CoursesComponent } from './courses/courses.component';
 import { WebService } from './web.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home-component/home.component';
-import { CourseComponent } from './course-component/course.component';
+import { HomeComponent } from './home/home.component';
+import { CourseComponent } from './course/course.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -15,16 +15,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { WdQuestionComponentComponent } from './questions-components/wd-questions/wd-question-component/wd-question-component.component';
 import { ChangeBgDirective } from './change-bg.directive';
-import { AssessmentComponentComponent } from './assessment-component/assessment-component.component';
-import { FdQuestionComponentComponent } from './questions-components/fd-questions/fd-question-component/fd-question-component.component';
-import { DdQuestionComponentComponent } from './questions-components/dd-questions/dd-question-component/dd-question-component.component';
-import { BdQuestionComponentComponent } from './questions-components/bd-questions/bd-question-component/bd-question-component.component';
 import { LoginComponent } from './login/login.component';
-import { NavComponent } from './nav-component/nav.component';
 import { ChatsComponent } from './chats/chats.component';
-import { StudentConnectComponent } from './studentconnect/studentconnect.component';
+import { StudentConnectComponent } from './student-connect/student-connect.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -36,13 +30,19 @@ import { FrontendDevelopmentComponent } from './course-categories/Frontend-Devel
 import { DatabaseDevelopmentComponent } from './course-categories/Database-Development/database-development.component';
 import { BackendDevelopmentComponent } from './course-categories/Backend-Development/backend-development.component';
 import { StudentsComponent } from './students/students.component';
-import { StudentSectionComponentComponent } from './student-section-component/student-section-component.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { InstructorComponent } from './instructor/instructor.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AssessmentComponent } from './assessment/assessment.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { StudentSectionComponent } from './student-section/student-section.component';
+import { WdQuestionsComponent } from './questions-components/wd-questions/wd-questions/wd-questions.component';
+import { FdQuestionsComponent } from './questions-components/fd-questions/fd-questions/fd-questions.component';
+import { DdQuestionsComponent } from './questions-components/dd-questions/dd-questions/dd-questions.component';
+import { BdQuestionsComponent } from './questions-components/bd-questions/bd-questions/bd-questions.component';
 
 var routes: any = [
   {
@@ -51,7 +51,7 @@ var routes: any = [
   },
   {
     path: 'app',
-    component: NavComponent,
+    component: NavigationComponent,
     canActivate: [AuthGuard],
     children: [
       {
@@ -68,27 +68,27 @@ var routes: any = [
       },
       {
         path: 'assessment',
-        component: AssessmentComponentComponent
+        component: AssessmentComponent
       },
       {
         path: 'assessment/wd-questions',
-        component: WdQuestionComponentComponent
+        component: WdQuestionsComponent
       },
       {
         path: 'assessment/fd-questions',
-        component: FdQuestionComponentComponent
+        component: FdQuestionsComponent
       },
       {
         path: 'assessment/dd-questions',
-        component: DdQuestionComponentComponent
+        component: DdQuestionsComponent
       },
       {
         path: 'assessment/bd-questions',
-        component: BdQuestionComponentComponent
+        component: BdQuestionsComponent
       },
       {
         path: 'student-section',
-        component: StudentSectionComponentComponent,
+        component: StudentSectionComponent,
       },
       {
         path: 'student-connect',
@@ -103,19 +103,19 @@ var routes: any = [
         component: ChatsComponent,
       },
       {
-        path: 'web_design',
+        path: 'web-design',
         component: WebDesignComponent
       },
       {
-        path: 'frontend_development',
+        path: 'frontend-development',
         component: FrontendDevelopmentComponent
       },
       {
-        path: 'backend_development',
+        path: 'backend-development',
         component: BackendDevelopmentComponent
       },
       {
-        path: 'database_development',
+        path: 'database-development',
         component: DatabaseDevelopmentComponent
       },
       {
@@ -142,13 +142,7 @@ var routes: any = [
     HomeComponent,
     CourseComponent,
     ChangeBgDirective,
-    WdQuestionComponentComponent,
-    AssessmentComponentComponent,
-    FdQuestionComponentComponent,
-    DdQuestionComponentComponent,
-    BdQuestionComponentComponent,
     LoginComponent,
-    NavComponent,
     ChatsComponent,
     StudentConnectComponent,
     WebDesignComponent,
@@ -156,9 +150,15 @@ var routes: any = [
     DatabaseDevelopmentComponent,
     BackendDevelopmentComponent,
     StudentsComponent,
-    StudentSectionComponentComponent,
     ChatbotComponent,
-    InstructorComponent
+    InstructorComponent,
+    AssessmentComponent,
+    NavigationComponent,
+    StudentSectionComponent,
+    WdQuestionsComponent,
+    FdQuestionsComponent,
+    DdQuestionsComponent,
+    BdQuestionsComponent
   ],
   imports: [
     BrowserModule,

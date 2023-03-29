@@ -1,0 +1,760 @@
+<ngx-spinner></ngx-spinner>
+
+<link rel="stylesheet" href="https://cdn.tailgrids.com/tailgrids-fallback.css" />
+<style>
+  .gradient {
+    margin-top: -24px;
+    background: #B09A70;
+  }
+</style>
+
+<div class="ml-24" *ngFor="let course of course_list | async">
+  <h1><b id="h1">{{ course.course_title }}</b></h1>
+</div>
+<div class="w-full mb-4">
+  <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+</div>
+
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon style="margin-right: 5px;" class="example-tab-icon">description</mat-icon>
+      Overview
+    </ng-template>
+
+    <!-- Course Cards Section Start -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+      <div class="rounded-lg overflow-hidden mb-10" *ngFor="let course of course_list | async">
+        <div class="flex-shrink-0">
+          <img class="h-48 w-full object-cover" src="{{ course.course_image }}" alt="" />
+        </div>
+        <div class="flex flex-1 flex-col justify-between bg-slate-200">
+          <div class="mt-2 block">
+            <p class="text-xl font-semibold text-gray-900">
+              {{ course.course_title }}
+            </p>
+            <div class="flex-1">
+              <p class="text-sm font-medium text-indigo-600">
+                <span>{{ course.course_difficulty }}</span>
+              </p>
+              <p class="mt-3 text-base text-gray-500">
+                {{ course.course_description }}
+              </p>
+              <p class="mt-3 text-base text-gray-500">
+                This course is of <b>{{course.course_category}}</b> category and currently has
+                <b>{{course.num_of_students}}</b> students
+                enrolled.
+              </p>
+              <p class="mt-3 text-base text-gray-500">
+                Rating: {{ course.course_rating }} <mat-icon id="star">stars</mat-icon>
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center">
+            <div class="flex-shrink-0">
+              <span class="sr-only">test</span>
+              <img class="h-10 w-10 rounded-full ml-3" src="{{ course.lecturer_image }}" alt="" />
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900 ml-1">
+                <span>{{ course.lecturer_name }}</span>
+              </p>
+              <div class="flex space-x-1 text-sm text-gray-500 ml-1 mb-2">
+                <time>{{ course.display_date }}</time>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="authService.isAuthenticated$ | async;">
+          <button class="btn btn-primary" id="delete" (click)="onDeleteCourse(course)">Delete</button>
+          <button class="btn btn-primary" id="edit" (click)="onEditCourse(course)">Edit </button>
+        </ng-container>
+      </div>
+
+      <div class="container-fluid">
+        <p>Like what you see?</p><a href="mailto:">Click here to share via this course via email!</a>
+      </div>
+    </section>
+
+    <!-- Edit Course Details -->
+    <ng-container *ngIf="authService.isAuthenticated$ | async;">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2>Please Enter the Course Details</h2>
+            <form [formGroup]="courseForm2">
+              <div class="form-group">
+                <label for="course_title">Title</label>
+                <input type="text" id="course_title" name="course_title" class="form-control"
+                  formControlName="course_title">
+              </div>
+              <div class="form-group">
+                <label for="course_category">Category</label>
+                <input type="text" id="course_category" name="course_category" class="form-control"
+                  formControlName="course_category">
+              </div>
+              <div class="form-group">
+                <label for="course_image">Image</label>
+                <input type="text" id="course_image" name="course_image" class="form-control"
+                  formControlName="course_image">
+              </div>
+              <div class="form-group">
+                <label for="course_description">Description</label>
+                <input type="text" id="course_description" name="course_description" class="form-control"
+                  formControlName="course_description">
+              </div>
+              <div class="form-group">
+                <label for="course_difficulty">Difficulty</label>
+                <input type="text" id="course_difficulty" name="course_difficulty" class="form-control"
+                  formControlName="course_difficulty">
+              </div>
+              <div class="form-group">
+                <label for="lecturer_name">Lecturer Name</label>
+                <input type="text" id="lecturer_name" name="lecturer_name" class="form-control"
+                  formControlName="lecturer_name">
+              </div>
+              <div class="form-group">
+                <label for="release_year">Release Year</label>
+                <input type="text" id="release_year" name="release_year" class="form-control"
+                  formControlName="release_year">
+              </div>
+              <span *ngIf="isIncomplete()">You must complete all fields</span>
+              <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <ng-template #loggedOut>
+              <h2>Would you like to add a course? Please login to do so</h2>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let course of course_list | async" class="col-sm-6">
+        <button class="btn btn-primary" id="btn" (click)="saveCourse(course)">Save Course</button>
+      </div>
+    </ng-container>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon style="margin-right: 5px;" class="example-tab-icon">ondemand_video</mat-icon>
+      Learning Materials
+    </ng-template>
+
+    <!-- Learning Material Section -->
+    <div class="container" *ngFor="let course of course_list | async">
+      <div style="margin-left: 200px; margin-right: 200px">
+
+        <!-- Video 1 -->
+        <video width="800" height="400" id="video" controls>
+          <source src="{{ course.lecture_video_one }}" type="video/mp4">
+          <track kind="captions" src="..\assets\captions\english\angular-1-en.vtt" srclang="en" label="English">
+          <track kind="captions" src="..\assets\captions\french\angular-1-fr.vtt" srclang="fr" label="French">
+          <track kind="captions" src="..\assets\captions\german\angular-1-de.vtt" srclang="de" label="German">
+          <p>Here is a <a href="{{ course.lecture_video_one }}">link to download</a>the video.</p>
+        </video>
+
+        <!-- Transcript 1 -->
+        <ng-container *ngIf="!hideTranscriptFeature1 else show1">
+          <button id="btn2" class="btn btn-primary" (click)="hideTranscript1()">Hide Transcript</button>
+        </ng-container>
+        <ng-template #show1>
+          <button id="btn" class="btn btn-primary" (click)="showTranscript1()">Show Transcript</button>
+        </ng-template>
+
+        <mat-tab-group *ngIf="!hideTranscriptFeature1">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-gb"></span>
+              English
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              In this video, we'll create our first angler application and investigate its structure. So in a command
+              window,
+              let's navigate to the desktop and we'll create the new application with command N G U with D one as the
+              name of
+              the application. And when we're asked any questions, we just accept the default value. But in return, and
+              this
+              might take quite a while but eventually it will complete. Now we can see the D1 folder has been created so
+              we can
+              navigate into that and we can actually already run the application by the command N G serve. So by
+              default, it
+              creates a fully running Angler application which when it's running, we can inspect by putting in the
+              browser at
+              local host and port 4200 and we can see the default application in the browser. So now let's have a look
+              at the
+              code structure. First of all, we'll look into the source folder where we see the file index dot html. It's
+              a
+              fairly standard HTML template except for this tag, which is one we won't have seen before. But this is our
+              first
+              example of an angular component where the component is the main building block of an angler application.
+              Now, all
+              component source code is found in the APP sub folder of source. Let's look first at the APP component dot
+              T S file
+              will be specified the selector as app dot root matching the tag used in index at html. So anywhere where
+              we see
+              the appro tag and group will inject the output from the appro component. Now, in this component, it's
+              setting a
+              variable called title to the value D one. And if you look at the components html file, we find the code
+              that
+              specifies that default page that appears in the browser. Now we're gonna throw all that code away and
+              replace it
+              with a much more simple example. It has a head in one element with a welcome message that uses the value
+              of that
+              title variable. Now, if we see that and go back and check the browser, we can see that when it refreshes,
+              we get
+              the message. Welcome to D 1 or D1 was the value of title again. Just to show how that works. We'll go back
+              and
+              change the message to say welcome to my D one. And we can see the browser has already updated now as well
+              as the
+              typescript and html files. A component can also have a style sheet file. So let's define a CS S rule for
+              the head
+              in one element and we'll set the text color to red and the background color to yellow again when we save
+              that and
+              check in the browser, we can see our heading one element now defined in that style.
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-fr"></span>
+              French
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              Dans cette vidéo, nous allons créer notre première application de pêcheur à la ligne et étudier sa
+              structure. Dans
+              une fenêtre de commande, naviguons vers le bureau et créons une nouvelle application avec la commande N G
+              U et D
+              one comme nom de l'application. Et lorsqu'on nous pose des questions, nous acceptons simplement la valeur
+              par
+              défaut. Mais en retour, et cela peut prendre un certain temps, cela finira par se terminer. Nous pouvons
+              maintenant voir que le dossier D1 a été créé, nous pouvons donc y naviguer et nous pouvons déjà lancer
+              l'application par la commande N G serve. Par défaut, cela crée une application Angler complète qui,
+              lorsqu'elle
+              est en cours d'exécution, peut être inspectée en mettant le navigateur sur l'hôte local et le port 4200 et
+              nous
+              pouvons voir l'application par défaut dans le navigateur. Voyons maintenant la structure du code. Tout
+              d'abord,
+              nous allons regarder dans le dossier source où nous voyons le fichier index dot html. Il s'agit d'un
+              modèle HTML
+              relativement standard, à l'exception de cette balise, que nous n'avons jamais vue auparavant. Mais c'est
+              notre
+              premier exemple d'un composant angulaire où le composant est le bloc de construction principal d'une
+              application
+              angulaire. Maintenant, tout le code source du composant se trouve dans le sous-dossier APP de source.
+              Examinons
+              d'abord le fichier APP du composant dot T S. Le sélecteur sera spécifié comme app dot root correspondant à
+              la
+              balise utilisée dans index at html. Ainsi, partout où nous voyons la balise appro et le groupe, nous
+              injecterons
+              la sortie du composant appro. Maintenant, dans ce composant, il définit une variable appelée title à la
+              valeur D
+              one. Et si l'on regarde le fichier html du composant, on trouve le code qui spécifie la page par défaut
+              qui
+              apparaît dans le navigateur. Maintenant, nous allons jeter tout ce code et le remplacer par un exemple
+              beaucoup
+              plus simple. Il comporte un élément head in one avec un message de bienvenue qui utilise la valeur de la
+              variable
+              title. Maintenant, si nous voyons cela et que nous retournons vérifier le navigateur, nous pouvons voir
+              que
+              lorsqu'il est rafraîchi, nous obtenons le message. Welcome to D 1 ou D1 était la valeur de la variable
+              title.
+              Juste pour montrer comment cela fonctionne. Nous allons revenir en arrière et changer le message pour dire
+              "Bienvenue sur mon D 1". Et nous pouvons voir que le navigateur a déjà été mis à jour ainsi que les
+              fichiers
+              typescript et html. Un composant peut également avoir un fichier de feuille de style. Définissons donc une
+              règle
+              CS S pour l'élément head in one et fixons la couleur du texte au rouge et celle de l'arrière-plan au
+              jaune.
+              Lorsque nous sauvegardons et vérifions dans le navigateur, nous pouvons voir que notre élément head in one
+              est
+              maintenant défini dans ce style.
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-de"></span>
+              German
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              In diesem Video werden wir unsere erste Angler-Anwendung erstellen und ihre Struktur untersuchen.
+              Navigieren wir
+              also in einem Befehlsfenster zum Desktop und erstellen wir die neue Anwendung mit dem Befehl N G U mit D
+              one als
+              Name der Anwendung. Und wenn uns irgendwelche Fragen gestellt werden, akzeptieren wir einfach den
+              Standardwert.
+              Aber dafür, und das kann eine ganze Weile dauern, wird es schließlich abgeschlossen sein. Jetzt sehen wir,
+              dass
+              der D1-Ordner erstellt wurde, wir können also dorthin navigieren und die Anwendung bereits mit dem Befehl
+              N G
+              serve ausführen. Standardmäßig wird also eine vollständig laufende Angler-Anwendung erstellt, die wir,
+              wenn sie
+              läuft, überprüfen können, indem wir den Browser auf den lokalen Host und den Port 4200 setzen und die
+              Standardanwendung im Browser sehen. Lassen Sie uns nun einen Blick auf die Codestruktur werfen. Als erstes
+              schauen
+              wir in den Quellordner, wo wir die Datei index dot html sehen. Es handelt sich um eine ganz normale
+              HTML-Vorlage,
+              mit Ausnahme dieses Tags, den wir noch nicht gesehen haben. Dies ist jedoch unser erstes Beispiel für eine
+              Angular-Komponente, die den Hauptbaustein einer Angular-Anwendung darstellt. Der gesamte Quellcode der
+              Komponente
+              befindet sich im Unterordner APP von source. Schauen wir uns zunächst die APP-Komponente an, so wird der
+              Selektor
+              als app dot root angegeben, der mit dem in index at html verwendeten Tag übereinstimmt. Überall dort, wo
+              wir das
+              appro-Tag und die Gruppe sehen, wird also die Ausgabe der appro-Komponente injiziert. In dieser Komponente
+              wird
+              nun eine Variable namens title auf den Wert D one gesetzt. Und wenn Sie sich die html-Datei der Komponente
+              ansehen, finden Sie den Code, der die Standardseite angibt, die im Browser angezeigt wird. Jetzt werfen
+              wir diesen
+              ganzen Code weg und ersetzen ihn durch ein viel einfacheres Beispiel. Es hat einen Kopf in einem Element
+              mit einer
+              Willkommensnachricht, die den Wert der Variable title verwendet. Wenn wir das sehen und zurückgehen und
+              den
+              Browser überprüfen, können wir sehen, dass wir die Nachricht erhalten, wenn er aktualisiert wird.
+              Willkommen in D
+              1 oder D1 war wieder der Wert von title. Nur um zu zeigen, wie das funktioniert. Wir gehen zurück und
+              ändern die
+              Nachricht in "Willkommen in meinem D 1". Und wir sehen, dass der Browser bereits aktualisiert wurde,
+              ebenso wie
+              die Typescript- und HTML-Dateien. Eine Komponente kann auch eine Stylesheet-Datei haben. Definieren wir
+              also eine
+              CS S-Regel für die Überschrift in einem Element, setzen wir die Textfarbe auf Rot und die Hintergrundfarbe
+              auf
+              Gelb, und wenn wir das speichern und im Browser überprüfen, sehen wir, dass unsere Überschrift jetzt in
+              diesem
+              Stil definiert ist.
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+
+
+        <!-- Video 2 -->
+        <video width="800" height="400" controls>
+          <source src="../assets/angular_3.mp4" type="video/mp4">
+          <track kind="captions" src="..\assets\captions\english\angular-2-en.vtt" srclang="en" label="English">
+          <track kind="captions" src="..\assets\captions\french\angular-2-fr.vtt" srclang="fr" label="French">
+          <track kind="captions" src="..\assets\captions\german\angular-2-de.vtt" srclang="de" label="German">
+          <p>Here is a <a href="{{ course.lecture_video_two }}">link to download</a>the video.</p>
+        </video>
+
+        <!-- Transcript 2 -->
+        <ng-container *ngIf="!hideTranscriptFeature2 else show2">
+          <button id="btn2" class="btn btn-primary" (click)="hideTranscript2()">Hide Transcript</button>
+        </ng-container>
+        <ng-template #show2>
+          <button id="btn" class="btn btn-primary" (click)="showTranscript2()">Show Transcript</button>
+        </ng-template>
+
+        <mat-tab-group *ngIf="!hideTranscriptFeature2">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-gb"></span>
+              English
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              So in this video, we'll add a component of our own to our simple application. Now, we know that component
+              is
+              made up of three files, that's one html, one CS S and one typescript. So let's create a component for our
+              collection of businesses by creating the files, businesses dot component dot html, businesses dot
+              component dot
+              T S and businesses dot component dot CS S now R html file will be the output of the component. So again,
+              we'll
+              have a simple heading. One element, we leave the stylesheet file empty for now. And in the typescript
+              file, the
+              easiest thing to do is to copy the contents of our app dot component typescript file and we'll change the
+              selector to businesses which means the template URL and the style your rails to match. We'll update the
+              class
+              name and we'll just remove the contents of the class. Now, in our app dot component html file, we'll add a
+              businesses tag to inject the output of the new component onto the web page. So if we save those files and
+              check
+              it out in the browser, we can see we've got no output. But if we display a browser console and click
+              through
+              that. And different browsers will display this in a slightly different way, but we should be able to see
+              the
+              nature of the error message. Businesses is not a known element. And what we need to do is register our new
+              component with the application now because we added our businesses tag to the app dot component html file.
+              We
+              need to import the business component into the app component. Also in the main application file app dot
+              module,
+              we need to import the new component in the same way. And we also need to add it to our declarations list
+              alongside the existing app component. Now that we've done that we can go back to the browser and we can
+              see the
+              output of our new businesses component has been.
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-fr"></span>
+              French
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              Dans cette vidéo, nous allons donc ajouter un composant à notre application simple. Nous savons que le
+              composant
+              est constitué de trois fichiers, à savoir un fichier html, un fichier CS S et un fichier typescript.
+              Créons donc
+              un composant pour notre collection d'entreprises en créant les fichiers, entreprises dot composant dot
+              html,
+              entreprises dot composant dot T S et entreprises dot composant dot CS S. Le fichier R html sera la sortie
+              du
+              composant. Encore une fois, nous aurons un simple titre. Un élément, nous laissons le fichier de feuille
+              de
+              style vide pour l'instant. Et dans le fichier typescript, la chose la plus simple à faire est de copier le
+              contenu de notre fichier typescript app dot component et nous allons changer le sélecteur en businesses,
+              ce qui
+              signifie l'URL du modèle et le style que vos rails doivent correspondre. Nous mettrons à jour le nom de la
+              classe et nous supprimerons le contenu de la classe. Maintenant, dans notre fichier html app dot
+              component, nous
+              allons ajouter une balise businesses pour injecter la sortie du nouveau composant sur la page web. Si nous
+              sauvegardons ces fichiers et les vérifions dans le navigateur, nous pouvons voir que nous n'avons pas de
+              sortie.
+              Mais si nous affichons une console de navigateur et que nous cliquons dessus. Les différents navigateurs
+              l'afficheront de manière légèrement différente, mais nous devrions être en mesure de voir la nature du
+              message
+              d'erreur. Les entreprises ne sont pas un élément connu. Ce que nous devons faire, c'est enregistrer notre
+              nouveau composant dans l'application maintenant que nous avons ajouté notre balise business au fichier
+              html du
+              composant app dot. Nous devons importer le composant business dans le composant app. De même, dans le
+              fichier
+              principal de l'application, app dot module, nous devons importer le nouveau composant de la même manière.
+              Et
+              nous devons également l'ajouter à notre liste de déclarations aux côtés du composant d'application
+              existant.
+              Maintenant que nous avons fait cela, nous pouvons retourner dans le navigateur et nous pouvons voir la
+              sortie de
+              notre nouveau composant d'entreprise.
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-de"></span>
+              German
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              In diesem Video fügen wir also eine eigene Komponente zu unserer einfachen Anwendung hinzu. Wir wissen,
+              dass
+              eine Komponente aus drei Dateien besteht, nämlich einer html-, einer CS S- und einer typescript-Datei.
+              Lassen
+              Sie uns also eine Komponente für unsere Unternehmenssammlung erstellen, indem wir die Dateien businesses
+              dot
+              component dot html, businesses dot component dot T S und businesses dot component dot CS S erstellen,
+              wobei die
+              html-Datei die Ausgabe der Komponente sein wird. Wir werden also wieder eine einfache Überschrift haben.
+              Ein
+              Element, wir lassen die Stylesheet-Datei vorerst leer. Und in der Typescript-Datei ist es am einfachsten,
+              den
+              Inhalt unserer app dot component typescript-Datei zu kopieren und den Selektor in businesses zu ändern,
+              was
+              bedeutet, dass die Template-URL und der Stil Ihrer Rails angepasst werden. Wir aktualisieren den
+              Klassennamen
+              und entfernen einfach den Inhalt der Klasse. Jetzt fügen wir in unserer app dot component html-Datei ein
+              businesses-Tag hinzu, um die Ausgabe der neuen Komponente in die Webseite zu integrieren. Wenn wir diese
+              Dateien
+              speichern und im Browser überprüfen, können wir sehen, dass wir keine Ausgabe haben. Aber wenn wir eine
+              Browserkonsole anzeigen und durch diese klicken. Die verschiedenen Browser werden dies etwas anders
+              darstellen,
+              aber wir sollten in der Lage sein, die Art der Fehlermeldung zu erkennen. Businesses ist kein bekanntes
+              Element.
+              Wir müssen nun unsere neue Komponente in der Anwendung registrieren, da wir unser businesses-Tag zur app
+              dot
+              component html-Datei hinzugefügt haben. Wir müssen die Business-Komponente in die App-Komponente
+              importieren.
+              Auch in der Hauptanwendungsdatei app dot module müssen wir die neue Komponente auf die gleiche Weise
+              importieren. Außerdem müssen wir sie neben der bestehenden Anwendungskomponente in unsere
+              Deklarationsliste
+              aufnehmen. Nun, da wir das getan haben, können wir zum Browser zurückkehren und die Ausgabe unserer neuen
+              Business-Komponente sehen.
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+
+        <!-- Video 3 -->
+        <video width="800" height="400" controls>
+          <source src="{{ course.lecture_video_three }}" type="video/mp4">
+          <track kind="captions" src="..\assets\captions\english\angular-3-en.vtt" srclang="en" label="English">
+          <track kind="captions" src="..\assets\captions\french\angular-3-fr.vtt" srclang="fr" label="French">
+          <track kind="captions" src="..\assets\captions\german\angular-3-de.vtt" srclang="de" label="German">
+          <p>Here is a <a href="{{ course.lecture_video_three }}">link to download</a>the video.</p>
+        </video>
+
+        <!-- Transcript 3 -->
+        <ng-container *ngIf="!hideTranscriptFeature3 else show3">
+          <button id="btn2" class="btn btn-primary" (click)="hideTranscript3()">Hide Transcript</button>
+        </ng-container>
+        <ng-template #show3>
+          <button id="btn" class="btn btn-primary" (click)="showTranscript3()">Show Transcript</button>
+        </ng-template>
+
+        <mat-tab-group *ngIf="!hideTranscriptFeature3">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-gb"></span>
+              English
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              So in this video, we further develop our first application in angular by adding some data and seeing how
+              we can
+              process it. So let's go to our businesses component typescript file. I'm gonna create a structure called
+              business list. And business list is going to be a list of objects where each object specifies a business
+              by its
+              name city and review count. And we've chosen these field names to match up with three of the fields in the
+              database that we use in the demonstration application. So let's copy that and paste it in a couple of
+              times more
+              and we'll change the 2nd and 3rd objects so that the name city and review count values are different and
+              you can
+              use whatever values you want here and you can have as many objects as you like inside the business list.
+              So now
+              that our business list has been created, let's see how we can access it in the html file to inject those
+              values
+              onto the web page. So first of all, we'll add a heading two element to report how many businesses are in
+              the
+              directory. And we can do that by reporting the length property of the business list object without a
+              second head
+              and two elements to report the name of the first business in the collection. So the first business will be
+              at
+              list position zero. It says business list element zero. And it's the name property of that. And we can see
+              in
+              the browser how those values are being retrieved. Now, a very powerful element of angular is what are
+              known as
+              directives. And these are structures that add an element of processing to the html. The first one of these
+              we
+              look at is called NG 4 and it behaves a bit kind of like a for loop. And what it's going to do is iterate
+              across
+              the business list. And for each iteration, the current value for the business list will be held in the
+              variable
+              business. So NG 4 in this case will create three developments, one for each element in the business list.
+              And
+              inside the div we have a paragraph that reports the name city and review current properties. And if we
+              save that
+              and look into the browser again, we can see how those values have been extracted and are reported on the
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-fr"></span>
+              French
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              Dans cette vidéo, nous développons notre première application en angular en ajoutant des données et en
+              voyant
+              comment nous pouvons les traiter. Allons donc dans notre fichier typescript du composant business. Je vais
+              créer
+              une structure appelée business list. Et la liste des entreprises sera une liste d'objets où chaque objet
+              spécifie une entreprise par son nom, sa ville et son nombre d'avis. Nous avons choisi ces noms de champs
+              pour
+              qu'ils correspondent à trois des champs de la base de données que nous utilisons dans l'application de
+              démonstration. Nous allons donc copier et coller cette liste deux fois de plus et nous allons modifier les
+              deuxième et troisième objets de manière à ce que les valeurs de nom, de ville et de nombre d'avis soient
+              différentes. Vous pouvez utiliser les valeurs que vous voulez ici et vous pouvez avoir autant d'objets que
+              vous
+              le souhaitez dans la liste d'entreprises. Maintenant que notre liste d'entreprises a été créée, voyons
+              comment
+              nous pouvons y accéder dans le fichier html pour injecter ces valeurs dans la page web. Tout d'abord, nous
+              allons ajouter un élément d'en-tête deux pour indiquer combien d'entreprises se trouvent dans le
+              répertoire.
+              Pour ce faire, nous pouvons utiliser la propriété length de l'objet business list sans deuxième élément
+              head and
+              two pour indiquer le nom de la première entreprise de la collection. La première entreprise se trouve donc
+              à la
+              position zéro de la liste. Il s'agit de l'élément zéro de la liste d'entreprises. Et c'est la propriété de
+              nom
+              de cet élément. Nous pouvons voir dans le navigateur comment ces valeurs sont récupérées. Un élément très
+              puissant d'Angular est ce que l'on appelle les directives. Ce sont des structures qui ajoutent un élément
+              de
+              traitement au code HTML. La première que nous examinons s'appelle NG 4 et se comporte un peu comme une
+              boucle
+              for. Ce qu'elle va faire, c'est itérer à travers la liste d'affaires. Et pour chaque itération, la valeur
+              actuelle de la liste des entreprises sera conservée dans la variable business. Dans ce cas, NG 4 va créer
+              trois
+              développements, un pour chaque élément de la liste des entreprises. À l'intérieur de la div, nous avons un
+              paragraphe qui indique le nom de la ville et passe en revue les propriétés actuelles. Si nous sauvegardons
+              cela
+              et que nous regardons à nouveau dans le navigateur, nous pouvons voir comment ces valeurs ont été
+              extraites et
+              sont rapportées sur la page
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span style="margin-right: 5px;" class="fi fi-de"></span>
+              German
+            </ng-template>
+            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+              In diesem Video entwickeln wir also unsere erste Anwendung in Angular weiter, indem wir einige Daten
+              hinzufügen
+              und sehen, wie wir sie verarbeiten können. Gehen wir also zu unserer
+              Business-Komponenten-Typescript-Datei. Ich
+              werde eine Struktur namens business list erstellen. Die Geschäftsliste wird eine Liste von Objekten sein,
+              in der
+              jedes Objekt ein Geschäft durch seinen Namen, seine Stadt und die Anzahl der Bewertungen angibt. Wir haben
+              diese
+              Feldnamen so gewählt, dass sie mit drei der Felder in der Datenbank übereinstimmen, die wir in der
+              Demonstrationsanwendung verwenden. Kopieren wir das also und fügen es noch ein paar Mal ein, und wir
+              ändern das
+              zweite und das dritte Objekt, so dass die Werte für Name, Stadt und Anzahl der Bewertungen unterschiedlich
+              sind,
+              und Sie können hier beliebige Werte verwenden, und Sie können so viele Objekte wie Sie wollen in der
+              Geschäftsliste haben. Nachdem wir nun unsere Unternehmensliste erstellt haben, sehen wir uns an, wie wir
+              in der
+              Html-Datei darauf zugreifen können, um diese Werte in die Webseite zu integrieren. Zunächst fügen wir also
+              ein
+              Element mit der Überschrift zwei hinzu, um die Anzahl der Unternehmen im Verzeichnis zu melden. Und das
+              können
+              wir tun, indem wir die Längeneigenschaft des Unternehmenslistenobjekts ohne eine zweite Überschrift und
+              zwei
+              Elemente melden, um den Namen des ersten Unternehmens in der Sammlung zu melden. Das erste Unternehmen
+              befindet
+              sich also an Listenposition Null. Es heißt Geschäftslistenelement Null. Und das ist die Eigenschaft name
+              des
+              Elements. Und wir können im Browser sehen, wie diese Werte abgerufen werden. Ein sehr mächtiges Element
+              von
+              Angular sind die so genannten Direktiven. Dabei handelt es sich um Strukturen, die der HTML-Datei ein
+              Element
+              der Verarbeitung hinzufügen. Die erste von ihnen, die wir uns ansehen, heißt NG 4 und verhält sich ein
+              bisschen
+              wie eine for-Schleife. Sie iteriert durch die Geschäftsliste. Und bei jeder Iteration wird der aktuelle
+              Wert der
+              Geschäftsliste in der Variablen business gespeichert. NG 4 wird also in diesem Fall drei Entwicklungen
+              erstellen, eine für jedes Element in der Business-Liste. Und innerhalb des Divs haben wir einen Absatz,
+              der den
+              Namen city und die aktuellen Eigenschaften anzeigt. Wenn wir das speichern und erneut in den Browser
+              schauen,
+              können wir sehen, wie diese Werte extrahiert wurden und auf der Seite
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </mat-tab>
+
+
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon style="margin-right: 5px;" class="example-tab-icon">rate_review</mat-icon>
+      Reviews
+    </ng-template>
+
+    <div *ngFor="let course of course_list | async">
+      <h1>There are <b>{{course.review_count}}</b> Reviews Available for this Course.</h1>
+    </div>
+    <!-- Course Reviews -->
+    <div class="container" *ngFor="let course of course_list | async">
+      <mat-card class="mat-card-review" *ngFor="let review of reviews | async">
+        <mat-card-header>
+          <mat-card-title id="title">{{ review.name }}</mat-card-title>
+          <mat-card-subtitle id="subtitle">{{ review.date.substr(0,10) | date }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ review.text }}
+          </p>
+          <p>
+            <i>{{ review.stars }} Stars</i>
+          </p>
+          <p>
+            <b>Is this Review Helpful?</b>
+            Like: {{ review.like }} Dislike: {{ review.dislike }}
+          </p>
+          <mat-icon class="green-icon" (click)="onUpdateLike(review)" *ngIf="!hide">thumb_up_alt</mat-icon>
+          <mat-icon class="red-icon" (click)="onUpdateDislike(review)" *ngIf="!hide">thumb_down_alt</mat-icon>
+          <hr>
+          <h4 id="h4">Review Options:</h4>
+          <mat-icon class="red-icon" (click)="onDeleteReview(review._id, course)">delete</mat-icon>
+          <mat-icon class="blue-icon" (click)="onEditReview(review)">edit</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Create a Course Review -->
+    <h1 class="ml-1">Create a Course Review</h1>
+    <div class="container mb-20">
+      <div class="row">
+        <div class="col-sm-12">
+          <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(course)" *ngFor="let course of course_list | async">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" formControlName="name"
+                [ngClass]="{ 'error': isInvalid('name') }">
+            </div>
+            <div class="form-group">
+              <label for="review">Please leave your review below
+              </label>
+              <textarea id="review" rows="3" name="review" class="form-control" formControlName="review"
+                [ngClass]="{ 'error': isInvalid('review') }"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="stars">Please provide a rating
+                (5 = best)</label>
+              <select id="stars" name="stars" class="form-control" formControlName="stars">
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+              </select>
+            </div>
+
+            <span *ngIf="isIncomplete()">You must complete all fields</span>
+            <button *ngIf="!isIncomplete()" type="submit" id="btn" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <button *ngIf="!hideButton" class="btn btn-primary" id="btn" (click)="saveReview()">Save Review</button>
+  </mat-tab>
+
+
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon style="margin-right: 5px;" class="example-tab-icon">forum</mat-icon>
+      Student Discussion
+    </ng-template>
+
+    <!-- Coure Discussion Chat Feed -->
+    <div class="relative px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28 h-full">
+      <div class="relative mx-auto max-w-7xl">
+        <!-- Course Chat -->
+        <div class="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
+          <section>
+            <div class="overflow-hidden rounded-lg bg-white shadow h-full">
+              <div class="p-6 h-full flex justify-center">
+                <!-- <stream-channel-list></stream-channel-list> -->
+                <stream-channel class="flex-grow" *ngIf="!loading && joinedChat">
+                  <stream-channel-header></stream-channel-header>
+                  <stream-message-list></stream-message-list>
+                  <stream-notification-list></stream-notification-list>
+                  <stream-message-input></stream-message-input>
+                  <stream-thread name="thread">
+                    <stream-message-list mode="thread"></stream-message-list>
+                    <stream-message-input mode="thread"></stream-message-input>
+                  </stream-thread>
+                </stream-channel>
+
+                <div *ngIf="loading && !joinedChat">Loading chat...</div>
+                <div *ngIf="!loading && !joinedChat" class="flex flex-col gap-4 justify-center items-center">
+                  <span class="text-xl">You are not yet a member of this chat.</span>
+                  <button type="button" (click)="joinClassChat()"
+                    class="inline-flex items-center rounded-md border border-transparent bg-imperium-gold px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-imperium-gold-hover focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Join chat
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+            <button type="button" *ngIf="joinedChat && !loading" (click)="leaveClassChat()"
+              class="inline-flex mx-4 items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              Leave chat
+            </button>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+  </mat-tab>
+</mat-tab-group>
