@@ -7,6 +7,7 @@ export class WebService {
 
     course_list: any;
     private courseID: any;
+    private studentID: any;
 
     getCourses(page: number) {
         return this.http.get('http://localhost:5000/api/v1.0/courses?pn=' + page);
@@ -34,7 +35,7 @@ export class WebService {
     }
 
     //Filter Searchability
-    
+
     searchCourseDifficulty(difficulty: any) {
         return this.http.get('http://localhost:5000/api/v1.0/courses/course_difficulty=' + difficulty);
     }
@@ -198,6 +199,21 @@ export class WebService {
         studentData.append("email", student);
 
         return this.http.post('http://localhost:5000/api/v1.0/students', studentData);
+    }
+
+    getStudent(id: any) {
+        this.studentID = id;
+        return this.http.get('http://localhost:5000/api/v1.0/students/' + id);
+    }
+
+    updateStudent(sid: any, student: any) {
+        let studentData = new FormData();
+        studentData.append("email", student.email);
+        studentData.append("name", student.name);
+        studentData.append("student_image", student.student_image);
+
+        return this.http.put(
+            'http://localhost:5000/api/v1.0/students/' + sid, studentData);
     }
 
     //Instructor Component

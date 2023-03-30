@@ -43,6 +43,7 @@ import { WdQuestionsComponent } from './questions-components/wd-questions/wd-que
 import { FdQuestionsComponent } from './questions-components/fd-questions/fd-questions/fd-questions.component';
 import { DdQuestionsComponent } from './questions-components/dd-questions/dd-questions/dd-questions.component';
 import { BdQuestionsComponent } from './questions-components/bd-questions/bd-questions/bd-questions.component';
+import { StudentComponent } from './student/student.component';
 
 var routes: any = [
   {
@@ -123,6 +124,10 @@ var routes: any = [
         component: InstructorComponent
       },
       {
+        path: 'students/:id',
+        component: StudentComponent,
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
@@ -158,7 +163,8 @@ var routes: any = [
     WdQuestionsComponent,
     FdQuestionsComponent,
     DdQuestionsComponent,
-    BdQuestionsComponent
+    BdQuestionsComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

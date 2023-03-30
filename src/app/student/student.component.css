@@ -1,0 +1,32 @@
+#h1 {
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+#h2 {
+    font-size: 35px;
+}
+
+#h4 {
+    font-size: 20px;
+}
+
+#edit {
+    background-color: lightgreen;
+    color: black;
+    border: 1px solid black;
+}
+
+#btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #005F50;
+    border-color: black;
+}
+
+#btn:hover {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #003300;
+    border-color: black;
+}
