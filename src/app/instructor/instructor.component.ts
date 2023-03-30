@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { WebService } from '../web.service';
+import { InstructorService } from 'src/app/services/instructor/instructor.service';
+import { CourseService } from 'src/app/services/course/course.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,14 +18,15 @@ export class InstructorComponent {
   page: number = 1;
 
   constructor(public authService: AuthService,
-    public webService: WebService,
+    public instructorService: InstructorService,
+    public courseService: CourseService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
-    this.course_list = this.webService.getCourses(this.page);
-    this.instructor_list = this.webService.getInstructors();
+    this.course_list = this.courseService.getCourses(this.page);
+    this.instructor_list = this.instructorService.getInstructors();
 
     // Posts new instructor to Mongodb Database
     // if (this.authService.user$) {
@@ -55,7 +57,7 @@ export class InstructorComponent {
   }
 
   onAddCourse() {
-    this.webService.postCourse(this.courseForm.value).subscribe((response: any) => {
+    this.courseService.postCourse(this.courseForm.value).subscribe((response: any) => {
       this.courseForm.reset();
       this.openSnackBar("Course has been successfully added!");
     });

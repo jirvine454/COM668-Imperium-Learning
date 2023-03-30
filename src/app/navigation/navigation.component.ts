@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { ThemeService } from 'stream-chat-angular';
 import { AuthService as env } from '@auth0/auth0-angular';
 

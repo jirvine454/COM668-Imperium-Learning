@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WebService } from '.././../web.service';
+import { CourseService } from 'src/app/services/course/course.service';
 
 @Component({
   selector: 'app-backend-development',
@@ -10,10 +10,10 @@ export class BackendDevelopmentComponent {
 
   course_list: any = [];
 
-  constructor(public webService: WebService ) { }
+  constructor(public courseService: CourseService ) { }
 
   ngOnInit(): void {
-    this.webService.searchCourseCategory('Backend Development').subscribe((response: any) => {
+    this.courseService.searchCourseCategory('Backend Development').subscribe((response: any) => {
       this.course_list = response;
       console.log(this.course_list);
   });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WebService } from '../web.service';
+import { StudentService } from 'src/app/services/student/student.service';
 
 @Component({
   selector: 'app-students',
@@ -10,10 +10,10 @@ export class StudentsComponent {
   student_list: any = [];
   page: number = 1;
 
-  constructor(public webService: WebService ) { }
+  constructor(public studentService: StudentService ) { }
 
   ngOnInit() {
-    this.student_list = this.webService.getStudents(this.page);
+    this.student_list = this.studentService.getStudents(this.page);
     console.log(this.student_list);
   }
 }

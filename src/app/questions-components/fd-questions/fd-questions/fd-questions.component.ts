@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
-import { WebService } from '../../../web.service';
+import { AssessmentService } from 'src/app/services/assessment/assessment.service';
+
 @Component({
   selector: 'app-fd-questions',
   templateUrl: './fd-questions.component.html',
   styleUrls: ['./fd-questions.component.css']
 })
+
 export class FdQuestionsComponent implements OnInit {
 
   public questionList: any = [];
@@ -17,8 +19,9 @@ export class FdQuestionsComponent implements OnInit {
   inCorrectAnswer: number = 0;
   interval$: any;
   progress: string = "0";
-  isQuizCompleted : boolean = false;
-  constructor(public webService: WebService) { }
+  isQuizCompleted: boolean = false;
+  
+  constructor(public assessmentService: AssessmentService) { }
 
   ngOnInit(): void {
     this.getAllQuestions();
@@ -26,7 +29,7 @@ export class FdQuestionsComponent implements OnInit {
   }
 
   getAllQuestions() {
-    this.webService.getFDQuestions()
+    this.assessmentService.getFDQuestions()
       .subscribe(res => {
         this.questionList = res.questions;
         this.displayQuestionList = res
@@ -44,7 +47,7 @@ export class FdQuestionsComponent implements OnInit {
 
   answer(currentQno: number, option: any) {
 
-    if(currentQno === this.questionList.length){
+    if (currentQno === this.questionList.length) {
       this.isQuizCompleted = true;
       this.stopCounter();
     }

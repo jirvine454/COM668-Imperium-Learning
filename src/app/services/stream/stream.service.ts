@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/auth.service';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
 import { environment } from 'src/environments/environment';
 

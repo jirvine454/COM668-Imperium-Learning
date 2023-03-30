@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WebService } from '../web.service';
+import { CourseService } from 'src/app/services/course/course.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -18,6 +18,7 @@ interface FiltersGroup {
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
+
 export class CoursesComponent {
   course_list: any = [];
   search_course_list: any = [];
@@ -59,7 +60,7 @@ export class CoursesComponent {
       {value: 'Descending Order'}
     ];
   
-  constructor(public webService: WebService,
+  constructor(public courseService: CourseService,
       private formBuilder: FormBuilder,
       private snackBar: MatSnackBar) { }
 
@@ -68,9 +69,9 @@ export class CoursesComponent {
           this.page = Number(sessionStorage['page']);
       }
 
-      this.course_list = this.webService.getCourses(this.page);
+      this.course_list = this.courseService.getCourses(this.page);
 
-      this.webService.getCourseCount().subscribe(res => { this.course_count = res });
+      this.courseService.getCourseCount().subscribe(res => { this.course_count = res });
   }
 
   previousPage() {
@@ -78,7 +79,7 @@ export class CoursesComponent {
           this.page = this.page - 1;
           sessionStorage['page'] = this.page;
           this.course_list =
-              this.webService.getCourses(this.page);
+              this.courseService.getCourses(this.page);
       }
   }
 
@@ -86,7 +87,7 @@ export class CoursesComponent {
       this.page = pageNum;
       sessionStorage['page'] = this.page;
       this.course_list =
-          this.webService.getCourses(this.page);
+          this.courseService.getCourses(this.page);
   }
 
   lastPage() {
@@ -95,7 +96,7 @@ export class CoursesComponent {
       console.log("Total Number of Course Documents: " + this.course_count + " meaning last page is " + this.page);
       sessionStorage['page'] = this.page;
       this.course_list =
-          this.webService.getCourses(this.page);
+          this.courseService.getCourses(this.page);
   }
 
   nextPage() {
@@ -105,7 +106,7 @@ export class CoursesComponent {
           this.page = this.page + 1;
           sessionStorage['page'] = this.page;
           this.course_list =
-              this.webService.getCourses(this.page);
+              this.courseService.getCourses(this.page);
       }
   }
 
@@ -113,7 +114,7 @@ export class CoursesComponent {
       this.page = page;
       sessionStorage['page'] = this.page;
       this.course_list =
-          this.webService.getCourses(this.page);
+          this.courseService.getCourses(this.page);
   }
 
   openSnackBar(message: string, action?: string) {
@@ -122,18 +123,18 @@ export class CoursesComponent {
 
   searchCourseName(name: any) {
       if (name == "") {
-          this.course_list = this.webService.getCourses(this.page);
+          this.course_list = this.courseService.getCourses(this.page);
           this.search_course_list = null;
       }
       else if (name == "Database Development" || name == "Frontend Development" || name == "Backend Development" || name == "Web Design") {
           console.log("Searching by Category...");
-          this.webService.searchCourseCategory(name).subscribe((response: any) => {
+          this.courseService.searchCourseCategory(name).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else {
-          this.webService.searchCourseName(name).subscribe((response: any) => {
+          this.courseService.searchCourseName(name).subscribe((response: any) => {
               console.log("Searching by Name...");
               this.course_list = null;
               this.search_course_list = response;
@@ -145,27 +146,27 @@ export class CoursesComponent {
       console.log(filter);
       //Reset Filtering
       if (filter == "reset") {
-          this.course_list = this.webService.getCourses(this.page);
+          this.course_list = this.courseService.getCourses(this.page);
           this.search_course_list = null;
       }
       //Course Difficulty
       else if (filter == "Beginner") {
           console.log("Searching by Beginner Course Difficulty...");
-          this.webService.searchCourseDifficulty(filter).subscribe((response: any) => {
+          this.courseService.searchCourseDifficulty(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "Intermediate") {
           console.log("Searching by Intermediate Course Difficulty...");
-          this.webService.searchCourseDifficulty(filter).subscribe((response: any) => {
+          this.courseService.searchCourseDifficulty(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "Advanced") {
           console.log("Searching by Advanced Course Difficulty...");
-          this.webService.searchCourseDifficulty(filter).subscribe((response: any) => {
+          this.courseService.searchCourseDifficulty(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
@@ -174,28 +175,28 @@ export class CoursesComponent {
       //Course Released Year
       else if (filter == "2019") {
           console.log("Searching by 2019 Release Year...");
-          this.webService.searchCourseYear(filter).subscribe((response: any) => {
+          this.courseService.searchCourseYear(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "2020") {
           console.log("Searching by 2020 Release Year...");
-          this.webService.searchCourseYear(filter).subscribe((response: any) => {
+          this.courseService.searchCourseYear(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "2021") {
           console.log("Searching by 2021 Release Yeary...");
-          this.webService.searchCourseYear(filter).subscribe((response: any) => {
+          this.courseService.searchCourseYear(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "2022") {
           console.log("Searching by 2022 Release Year...");
-          this.webService.searchCourseYear(filter).subscribe((response: any) => {
+          this.courseService.searchCourseYear(filter).subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
@@ -204,21 +205,21 @@ export class CoursesComponent {
       //Course Rating
       else if (filter == "Greater Than Or Equal To 2.5") {
           console.log("Searching by greater than or equal to 2.5 course rating...");
-          this.webService.searchCourseRating1().subscribe((response: any) => {
+          this.courseService.searchCourseRating1().subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "Greater Than Or Equal To 3.5") {
           console.log("Searching by greater than or equal to 3.5 course rating...");
-          this.webService.searchCourseRating2().subscribe((response: any) => {
+          this.courseService.searchCourseRating2().subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
       }
       else if (filter == "Greater Than Or Equal To 4.5") {
           console.log("Searching by greater than or equal to 4.5 course rating...");
-          this.webService.searchCourseRating3().subscribe((response: any) => {
+          this.courseService.searchCourseRating3().subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
@@ -229,13 +230,13 @@ export class CoursesComponent {
       console.log(sort);
       //Reset Sorting
       if (sort == "reset") {
-          this.course_list = this.webService.getCourses(this.page);
+          this.course_list = this.courseService.getCourses(this.page);
           this.search_course_list = null;
       }
       //Ascending Order
       else if (sort == "Ascending Order") {
           console.log("Sorting Courses by Ascending Order...");
-          this.webService.sortAscendingOrder().subscribe((response: any) => {
+          this.courseService.sortAscendingOrder().subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });
@@ -243,7 +244,7 @@ export class CoursesComponent {
       //Descending Order
       else if (sort == "Descending Order") {
           console.log("Sorting Courses by Descending Order...");
-          this.webService.sortDescendingOrder().subscribe((response: any) => {
+          this.courseService.sortDescendingOrder().subscribe((response: any) => {
               this.course_list = null;
               this.search_course_list = response;
           });

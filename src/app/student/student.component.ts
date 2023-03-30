@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WebService } from '../web.service';
+import { StudentService } from 'src/app/services/student/student.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,13 +16,13 @@ export class StudentComponent {
   studentForm: any;
   currentStudentID: any;
 
-  constructor(public webService: WebService,
+  constructor(public studentService: StudentService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.student_list = this.webService.getStudent(
+    this.student_list = this.studentService.getStudent(
       this.route.snapshot.params['id']);
 
     this.studentForm = this.formBuilder.group({
@@ -45,9 +45,9 @@ export class StudentComponent {
   }
 
   saveStudent(student: any) {
-    this.webService.updateStudent(this.currentStudentID, this.studentForm.value).subscribe((response: any) => {
+    this.studentService.updateStudent(this.currentStudentID, this.studentForm.value).subscribe((response: any) => {
       this.studentForm.reset();
-      this.student_list = this.webService.getStudent(
+      this.student_list = this.studentService.getStudent(
         this.route.snapshot.params['id']);
       this.openSnackBar(student.student.name + " has been successfully updated!");
     });

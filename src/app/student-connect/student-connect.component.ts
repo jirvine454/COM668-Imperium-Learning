@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { ChatClientService, ChannelService } from 'stream-chat-angular';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { Component } from '@angular/core';
 import { concat, distinctUntilChanged, Observable, of, Subject, switchMap } from 'rxjs';
 import { UserResponse } from 'stream-chat';

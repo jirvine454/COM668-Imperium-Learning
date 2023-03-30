@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { AuthService as env } from '@auth0/auth0-angular';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { WebService } from '../web.service';
+import { StudentService } from 'src/app/services/student/student.service';
 
 @Component({
 	selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 		private auth: AuthService,
 		private router: Router,
 		private spinner: NgxSpinnerService,
-		public webService: WebService,
+		public studentService: StudentService,
 		public authService: env
 	) { }
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 		console.log(this.email);
 
 		// Posts email to students collection in MongoDB
-		this.webService.postStudent(this.email).subscribe((response: any) => {
+		this.studentService.postStudent(this.email).subscribe((response: any) => {
             console.log(response);
         });
 	}

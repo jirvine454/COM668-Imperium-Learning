@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
-import { WebService } from '../../../web.service';
+import { AssessmentService } from 'src/app/services/assessment/assessment.service';
 
 @Component({
   selector: 'app-dd-questions',
@@ -19,7 +19,7 @@ export class DdQuestionsComponent implements OnInit {
   interval$: any;
   progress: string = "0";
   isQuizCompleted : boolean = false;
-  constructor(public webService: WebService) { }
+  constructor(public assessmentService: AssessmentService) { }
 
   ngOnInit(): void {
     this.getAllQuestions();
@@ -27,7 +27,7 @@ export class DdQuestionsComponent implements OnInit {
   }
 
   getAllQuestions() {
-    this.webService.getDDQuestions()
+    this.assessmentService.getDDQuestions()
       .subscribe(res => {
         this.questionList = res.questions;
         this.displayQuestionList = res
