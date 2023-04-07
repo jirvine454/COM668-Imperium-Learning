@@ -1,0 +1,190 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "Hello",
+        "Is anyone there?"
+      ],
+      "responses": [
+        "Hey!",
+        "Hello, thanks for visiting Imperium Learning!",
+        "Hi there, what can I do for you?",
+        "Hello, how may I help?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye", 
+        "See you later", 
+        "Goodbye"
+      ],
+      "responses": [
+        "See you later, thanks for visiting.",
+        "Have a nice day!",
+        "Bye! Come back again soon."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks", 
+        "Thank you", 
+        "That's helpful"
+      ],
+      "responses": [
+        "Happy to help!", 
+        "Any time!", 
+        "My pleasure."]
+    },
+    {
+      "tag": "web_design_recommendation",
+      "patterns": [
+        "I like web design",
+        "I love designing websites",
+        "I'm interested in building a web application"
+      ],
+      "responses": [
+        "I suggest The Modern Angular Bootcamp by Hilary Pennington.",
+        "Try Master HTML, an intermediate web design course taught by Hilary Pennington.",
+        "I recommend CSS: From Beginner to Expert which is lead by Susannah Sharp.",
+        "How about JavaScript Basics for Beginners? A beginner course taught by Damian Cross."
+      ]
+    },
+    {
+      "tag": "backend_development_recommendation",
+      "patterns": [
+        "I'm interested in learning a backend language",
+        "Are there any Python courses?",
+        "I'd like to learn machine learning"
+      ],
+      "responses": [
+        "How about our new Advanced Machine Learning in Python course? You'll learn about Tensorflow and NumPy!",
+        "For entry level, I recommend our Python for Beginners course, taught by Joel Robertson.",
+        "How about The Complete Python Programming Course for skills of all levels!"
+      ]
+    },
+    {
+      "tag": "database_recommendation",
+      "patterns": [
+        "Are there any courses on databases?",
+        "I'm interested in databases",
+        "I have experience with data structures"
+      ],
+      "responses": [
+        "I recommend our MySQL for Databases courses, where Damian Cross will take you through Normalization and Entity Relationships.",
+        "For databases courses, I suggest The Complete SQl Server Course to get you started.",
+        "The Ultimate C# Guide by Jin Lu is the right course for you!"
+      ]
+    },
+    {
+      "tag": "angular_question_1",
+      "patterns": [
+        "How can I make a custom component using Angular CLI?",
+        "What is the command for creating an Angular component?"
+      ],
+      "responses": [
+        "To create a custom Angular component, navigate to the terminal. In the terminal, navigate to the location of the root folder of your project. Then simply run the ng generate component command followed by the name of the new component.",
+        "Creating custom Angular components can be achieved using the ng generate component <new_component_name> command or ng g c <new_component_name> for short! "
+      ]
+    },
+    {
+      "tag": "angular_question_2",
+      "patterns": [
+        "What is the Ng Model attribute directive?",
+        "Is there an Angular directive that enables two-way binding?"
+      ],
+      "responses": [
+        "Angular NgModel is an inbuilt directive that creates a FormControl instance from the domain model and binds it to a form control element, or in other words, it enables two-way binding.",
+        "The NgModel directive binds an HTML form element to a variable in the scope, enabling two-way binding. If the variable does not exist in the scope, it will be created."
+      ]
+    },
+    {
+      "tag": "python_question_1",
+      "patterns": [
+        "Can I have duplicate values in my Python list?",
+        "Do the values in my python list have to be distinct? "
+      ],
+      "responses": [
+        "Since Python lists are indexed, lists can have items with the same value. Just remember to put keep its values in the square brackets.",
+        "A Python list may contain duplicate values with their distinct positions and hence, multiple distinct or duplicate values can be passed as a sequence at the time of list creation."
+      ]
+    },
+    {
+      "tag": "python_question_2",
+      "patterns": [
+        "How can I sort a Python list by the date?"
+      ],
+      "responses": [
+        "Sorting a Python list by date can be achieved by using the Lambda function as well as the time package. Simply provide the list you’d like to sort and utilise the strptime method to format and return a string that represents the date."
+      ]
+    },
+    {
+      "tag": "python_question_3",
+      "patterns": [
+        "Can you help me sort dates by ascending order in Python 3?"
+      ],
+      "responses": [
+        "Try asc_sorted_data = sorted(<list_name>, key=lambda x: time.strptime(x['date_value'], '%d-%m-%Y')) in your Python code to sort dates in ascending order."
+      ]
+    },
+    {
+      "tag": "database_question_1",
+      "patterns": [
+        "What does SQL stand for?",
+        "What does structured query language mean?"
+      ],
+      "responses": [
+        "Structured Query Language, or SQL for short, is a computer language that we use to interact with a relational database. SQL is a tool for organizing, managing, and retrieving archived data from a computer database (https://www.geeksforgeeks.org/what-is-sql/, 2023).",
+        "SQL is a standardized programming language that is used to manage relational databases and perform various operations on the data in them (https://www.techtarget.com/searchdatamanagement/definition/SQL, n.d)."
+      ]
+    },
+    {
+      "tag": "database_question_2",
+      "patterns": [
+        "What is the SQL statement to remove duplicate values for a database table?",
+        "Is there an SQL command to return the different values in a database tuple?"
+      ],
+      "responses": [
+        "The SELECT DISTINCT statement will remove dupliatre values from a database table, visit https://www.w3schools.com/Sql/sql_distinct.asp for more information.",
+        "To return all of the different values from your database table, try SELECT DISTINCT column_name, ... FROM table_name;"
+      ]
+    },
+    {
+      "tag": "customer_service_question_1",
+      "patterns": [
+        "I have a learning disability, is Imperium Learning the right place for me?",
+        "Are Imperium Learning courses accessible?"
+      ],
+      "responses": [
+        "Imperium Learning prides itself in offering a wide range of learning material accessibility elements such as video transcripts, captions, and the ability to download lectures to accommodate students with learning disabilities."
+      ]
+    },
+    {
+      "tag": "customer_service_question_2",
+      "patterns": [
+        "How can I message other students?",
+        "Can I get into contact with other students?"
+      ],
+      "responses": [
+        "Imperium Learning allows students to connect with one other through Student Connect, our unique messaging platform. Simply navigate to the ‘Students’ tab in the navigation bar, click on ‘Student Connect’ and create a chat channel with a fellow student!"
+      ]
+    },
+    {
+      "tag": "facts",
+      "patterns": [
+        "Tell me a random fact",
+        "Do you know any facts?",
+        "Any facts?"
+      ],
+      "responses": [
+        "Imperium Learning offers 10 unique courses in 10 programming languages by 7 instructors",
+        "Australia is wider than the moon. The moon sits at 3400km in diameter, while Australia’s diameter from east to west is almost 4000km.",
+        "You can hear a blue whale's heartbeat from over 2 miles away. Blue whales weigh an average of between 130,000 and 150,000kg, with their hearts weighing roughly 180kg."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+delete a collection:
+
+db.<collection_name>.drop()
+
+import a dataset:
+
+mongoimport --db coursesDB --collection courses --jsonArray C:\courses.json
