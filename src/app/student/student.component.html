@@ -61,7 +61,7 @@
 </section>
 
 <!-- Edit Course Details -->
-<div class="container">
+<div class="container" *ngFor="let student of student_list | async">
     <div class="row">
         <div class="col-sm-12">
             <h2>Please Enter the Student Details</h2>
@@ -69,24 +69,21 @@
                 <div class="form-group">
                     <label for="name">Student Name</label>
                     <input type="text" id="name" name="name" class="form-control"
-                        formControlName="name">
+                        formControlName="name" [ngClass]="{ 'error': isInvalid('name') }">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" class="form-control"
-                        formControlName="email">
+                        formControlName="email" [ngClass]="{ 'error': isInvalid('email') }">
                 </div>
                 <div class="form-group">
                     <label for="student_image">Student Profile Pitcure</label>
                     <input type="text" id="student_image" name="student_image" class="form-control"
-                        formControlName="student_image">
+                        formControlName="student_image" [ngClass]="{ 'error': isInvalid('student_image') }">
                 </div>
                 <span *ngIf="isIncomplete()">You must complete all fields</span>
-                <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
+                <button *ngIf="!isIncomplete()" class="btn btn-primary" id="btn" (click)="saveStudent(student)">Save Details</button>
             </form>
-        </div>
+        </div> 
     </div>
-</div>
-<div *ngFor="let student of student_list | async" class="col-sm-6">
-    <button class="btn btn-primary" id="btn" (click)="saveStudent(student)">Save Details</button>
 </div>

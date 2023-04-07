@@ -82,53 +82,53 @@
         <div class="row">
           <div class="col-sm-12">
             <h2>Please Enter the Course Details</h2>
-            <form [formGroup]="courseForm2">
+            <form [formGroup]="courseForm">
               <div class="form-group">
                 <label for="course_title">Title</label>
                 <input type="text" id="course_title" name="course_title" class="form-control"
-                  formControlName="course_title">
+                  formControlName="course_title" [ngClass]="{ 'error': isInvalidCourse('course_title') }">
               </div>
               <div class="form-group">
                 <label for="course_category">Category</label>
                 <input type="text" id="course_category" name="course_category" class="form-control"
-                  formControlName="course_category">
+                  formControlName="course_category" [ngClass]="{ 'error': isInvalidCourse('course_category') }">
               </div>
               <div class="form-group">
                 <label for="course_image">Image</label>
                 <input type="text" id="course_image" name="course_image" class="form-control"
-                  formControlName="course_image">
+                  formControlName="course_image" [ngClass]="{ 'error': isInvalidCourse('course_image') }">
               </div>
               <div class="form-group">
                 <label for="course_description">Description</label>
                 <input type="text" id="course_description" name="course_description" class="form-control"
-                  formControlName="course_description">
+                  formControlName="course_description" [ngClass]="{ 'error': isInvalidCourse('course_description') }">
               </div>
               <div class="form-group">
                 <label for="course_difficulty">Difficulty</label>
                 <input type="text" id="course_difficulty" name="course_difficulty" class="form-control"
-                  formControlName="course_difficulty">
+                  formControlName="course_difficulty" [ngClass]="{ 'error': isInvalidCourse('course_difficulty') }">
               </div>
               <div class="form-group">
                 <label for="lecturer_name">Lecturer Name</label>
                 <input type="text" id="lecturer_name" name="lecturer_name" class="form-control"
-                  formControlName="lecturer_name">
+                  formControlName="lecturer_name" [ngClass]="{ 'error': isInvalidCourse('lecturer_name') }">
               </div>
               <div class="form-group">
                 <label for="release_year">Release Year</label>
                 <input type="text" id="release_year" name="release_year" class="form-control"
-                  formControlName="release_year">
+                  formControlName="release_year" [ngClass]="{ 'error': isInvalidCourse('release_year') }">
               </div>
-              <span *ngIf="isIncomplete()">You must complete all fields</span>
-              <button *ngIf="!isIncomplete()" type="submit" class="btn btn-primary">Submit</button>
             </form>
             <ng-template #loggedOut>
               <h2>Would you like to add a course? Please login to do so</h2>
             </ng-template>
           </div>
         </div>
-      </div>
-      <div *ngFor="let course of course_list | async" class="col-sm-6">
-        <button class="btn btn-primary" id="btn" (click)="saveCourse(course)">Save Course</button>
+        <span *ngIf="isIncomplete2()">You must complete all fields</span>
+        <div *ngFor="let course of course_list | async" class="col-sm-6">
+          <button *ngIf="!isIncomplete2()" class="btn btn-primary" id="btn" (click)="saveCourse(course)">Save
+            Course</button>
+        </div>
       </div>
     </ng-container>
   </mat-tab>
@@ -166,7 +166,8 @@
               <span style="margin-right: 5px;" class="fi fi-gb"></span>
               English
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize"
+              style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               In this video, we'll create our first angler application and investigate its structure. So in a command
               window,
               let's navigate to the desktop and we'll create the new application with command N G U with D one as the
@@ -218,7 +219,7 @@
               <span style="margin-right: 5px;" class="fi fi-fr"></span>
               French
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               Dans cette vidéo, nous allons créer notre première application de pêcheur à la ligne et étudier sa
               structure. Dans
               une fenêtre de commande, naviguons vers le bureau et créons une nouvelle application avec la commande N G
@@ -275,7 +276,7 @@
               <span style="margin-right: 5px;" class="fi fi-de"></span>
               German
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               In diesem Video werden wir unsere erste Angler-Anwendung erstellen und ihre Struktur untersuchen.
               Navigieren wir
               also in einem Befehlsfenster zum Desktop und erstellen wir die neue Anwendung mit dem Befehl N G U mit D
@@ -326,6 +327,10 @@
           </mat-tab>
         </mat-tab-group>
 
+        <div *ngIf="!hideTranscriptFeature1">
+          <button id="btn" class="btn btn-primary" (click)="fontSize = fontSize + 2">Increase Font Size</button>
+          <button id="btn2" class="btn btn-primary" (click)="fontSize = fontSize - 2">Decrease Font Size</button>
+        </div>
 
         <!-- Video 2 -->
         <video width="800" height="400" controls>
@@ -350,7 +355,7 @@
               <span style="margin-right: 5px;" class="fi fi-gb"></span>
               English
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize2" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               So in this video, we'll add a component of our own to our simple application. Now, we know that component
               is
               made up of three files, that's one html, one CS S and one typescript. So let's create a component for our
@@ -387,7 +392,7 @@
               <span style="margin-right: 5px;" class="fi fi-fr"></span>
               French
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize2" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               Dans cette vidéo, nous allons donc ajouter un composant à notre application simple. Nous savons que le
               composant
               est constitué de trois fichiers, à savoir un fichier html, un fichier CS S et un fichier typescript.
@@ -430,7 +435,7 @@
               <span style="margin-right: 5px;" class="fi fi-de"></span>
               German
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize2" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               In diesem Video fügen wir also eine eigene Komponente zu unserer einfachen Anwendung hinzu. Wir wissen,
               dass
               eine Komponente aus drei Dateien besteht, nämlich einer html-, einer CS S- und einer typescript-Datei.
@@ -468,6 +473,11 @@
           </mat-tab>
         </mat-tab-group>
 
+        <div *ngIf="!hideTranscriptFeature2">
+          <button id="btn" class="btn btn-primary" (click)="fontSize2 = fontSize2 + 2">Increase Font Size</button>
+          <button id="btn2" class="btn btn-primary" (click)="fontSize2 = fontSize2 - 2">Decrease Font Size</button>
+        </div>
+
         <!-- Video 3 -->
         <video width="800" height="400" controls>
           <source src="{{ course.lecture_video_three }}" type="video/mp4">
@@ -491,7 +501,7 @@
               <span style="margin-right: 5px;" class="fi fi-gb"></span>
               English
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize3" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               So in this video, we further develop our first application in angular by adding some data and seeing how
               we can
               process it. So let's go to our businesses component typescript file. I'm gonna create a structure called
@@ -535,7 +545,7 @@
               <span style="margin-right: 5px;" class="fi fi-fr"></span>
               French
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize3" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               Dans cette vidéo, nous développons notre première application en angular en ajoutant des données et en
               voyant
               comment nous pouvons les traiter. Allons donc dans notre fichier typescript du composant business. Je vais
@@ -581,7 +591,7 @@
               <span style="margin-right: 5px;" class="fi fi-de"></span>
               German
             </ng-template>
-            <div style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
+            <div [style.font-size.px]="fontSize3" style="width:auto; height:150px; overflow:auto; padding:5px; margin-bottom: 20px;">
               In diesem Video entwickeln wir also unsere erste Anwendung in Angular weiter, indem wir einige Daten
               hinzufügen
               und sehen, wie wir sie verarbeiten können. Gehen wir also zu unserer
@@ -625,6 +635,10 @@
             </div>
           </mat-tab>
         </mat-tab-group>
+        <div *ngIf="!hideTranscriptFeature3">
+          <button id="btn" class="btn btn-primary" (click)="fontSize3 = fontSize3 + 2">Increase Font Size</button>
+          <button id="btn2" class="btn btn-primary" (click)="fontSize3 = fontSize3 - 2">Decrease Font Size</button>
+        </div>
       </div>
     </div>
   </mat-tab>
@@ -704,8 +718,6 @@
 
     <button *ngIf="!hideButton" class="btn btn-primary" id="btn" (click)="saveReview()">Save Review</button>
   </mat-tab>
-
-
 
   <mat-tab>
     <ng-template mat-tab-label>

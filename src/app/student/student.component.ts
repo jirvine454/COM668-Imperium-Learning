@@ -62,13 +62,11 @@ export class StudentComponent {
   }
 
   isUntouched() {
-    return this.studentForm.controls.name.pristine || this.studentForm.controls.review.pristine;
+    return this.studentForm.controls.name.pristine;
   }
 
   isIncomplete() {
     return this.isInvalid('name') ||
-      this.isInvalid('email') ||
-      this.isInvalid('student_image') ||
       this.isUntouched();
   }
 }

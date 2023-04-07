@@ -24,8 +24,8 @@ export class CourseComponent implements OnInit {
     course_list: any = [];
     course_list_stream_channel: any = [];
     reviews: any = [];
+    reviewCountForm: any;
     courseForm: any;
-    courseForm2: any;
     reviewForm: any;
     voteForm: any;
     currentReviewID: any;
@@ -35,6 +35,9 @@ export class CourseComponent implements OnInit {
     hide: boolean = false;
     hideButton: boolean = true;
     activatedRoute: any;
+    fontSize = 14;
+    fontSize2 = 14;
+    fontSize3 = 14;
 
     hideTranscriptFeature1: boolean = true;
     hideTranscriptFeature2: boolean = true;
@@ -78,7 +81,7 @@ export class CourseComponent implements OnInit {
             stars: 5
         });
 
-        this.courseForm2 = this.formBuilder.group({
+        this.courseForm = this.formBuilder.group({
             course_title: ['', Validators.required],
             course_category: ['', Validators.required],
             course_image: ['', Validators.required],
@@ -153,7 +156,7 @@ export class CourseComponent implements OnInit {
         ++review_count;
         console.log(review_count);
 
-        this.courseForm = this.formBuilder.group({
+        this.reviewCountForm = this.formBuilder.group({
             review_count: [review_count]
         });
 
@@ -163,7 +166,7 @@ export class CourseComponent implements OnInit {
                 this.route.snapshot.params['id']);
             this.openSnackBar("Review for " + course.course_title + " has been successfully posted!");
 
-            this.courseService.updateReviewCount(this.courseForm.value).subscribe((response: any) => {
+            this.courseService.updateReviewCount(this.reviewCountForm.value).subscribe((response: any) => {
                 this.course_list = this.courseService.getCourse(
                     this.route.snapshot.params['id']);
             });
@@ -176,7 +179,7 @@ export class CourseComponent implements OnInit {
             --review_count
         console.log(review_count);
 
-        this.courseForm = this.formBuilder.group({
+        this.reviewCountForm = this.formBuilder.group({
             review_count: [review_count]
         });
 
@@ -185,7 +188,7 @@ export class CourseComponent implements OnInit {
                 this.route.snapshot.params['id']);
             this.openSnackBar("Review for " + course.course_title + " has been successfully deleted!");
 
-            this.courseService.updateReviewCount(this.courseForm.value).subscribe((response: any) => {
+            this.courseService.updateReviewCount(this.reviewCountForm.value).subscribe((response: any) => {
                 this.course_list = this.courseService.getCourse(
                     this.route.snapshot.params['id']);
             });
@@ -206,7 +209,7 @@ export class CourseComponent implements OnInit {
 
     onEditCourse(course: any) {
         console.log(course);
-        this.courseForm2 = this.formBuilder.group({
+        this.courseForm = this.formBuilder.group({
             course_title: [course.course_title, Validators.required],
             course_category: [course.course_category, Validators.required],
             course_image: [course.course_image, Validators.required],
@@ -217,7 +220,7 @@ export class CourseComponent implements OnInit {
         });
 
         this.currentCourseID = course._id;
-        console.log(this.courseForm2.value);
+        console.log(this.courseForm.value);
     }
 
     saveReview() {
@@ -230,8 +233,8 @@ export class CourseComponent implements OnInit {
     }
 
     saveCourse(course: any) {
-        this.courseService.updateCourse(this.currentCourseID, this.courseForm2.value).subscribe((response: any) => {
-            this.courseForm2.reset();
+        this.courseService.updateCourse(this.currentCourseID, this.courseForm.value).subscribe((response: any) => {
+            this.courseForm.reset();
             this.course_list = this.courseService.getCourse(
                 this.route.snapshot.params['id']);
             this.openSnackBar(course.course_title + " has been successfully edited!");
@@ -274,6 +277,16 @@ export class CourseComponent implements OnInit {
         });
     }
 
+    onDeleteCourse(course: any) {
+        this.courseService.deleteCourse(course._id).subscribe((response: any) => {
+            this.course_list = this.courseService.getCourse(
+                this.route.snapshot.params['id']);
+            this.openSnackBar(course.course_title + " has been successfully deleted!");
+        });
+    }
+
+    // Review Form Validation
+
     isInvalid(control: any) {
         return this.reviewForm.controls[control].invalid && this.reviewForm.controls[control].touched;
     }
@@ -288,33 +301,19 @@ export class CourseComponent implements OnInit {
             this.isUntouched();
     }
 
-    onDeleteCourse(course: any) {
-        this.courseService.deleteCourse(course._id).subscribe((response: any) => {
-            this.course_list = this.courseService.getCourse(
-                this.route.snapshot.params['id']);
-            this.openSnackBar(course.course_title + " has been successfully deleted!");
-        });
+    // Course Form Validation
+
+    isInvalidCourse(control: any) {
+        return this.courseForm.controls[control].invalid && this.courseForm.controls[control].touched;
     }
 
     isUntouched2() {
-        return this.courseForm.controls.course_title.pristine ||
-            this.courseForm.controls.course_category.pristine ||
-            this.courseForm.controls.course_image.pristine ||
-            this.courseForm.controls.course_description.pristine ||
-            this.courseForm.controls.course_difficulty.pristine ||
-            this.courseForm.controls.lecturer_name.pristine ||
-            this.courseForm.controls.release_year.pristine;
+        return this.courseForm.controls.course_title.pristine;
     }
 
     isIncomplete2() {
-        return this.isInvalid('course_title') ||
-            this.isInvalid('course_category') ||
-            this.isInvalid('course_image') ||
-            this.isInvalid('course_description') ||
-            this.isInvalid('course_difficulty') ||
-            this.isInvalid('lecturer_name') ||
-            this.isInvalid('release_year') ||
-            this.isUntouched();
+        return this.isInvalidCourse('course_title') ||
+            this.isUntouched2();
     }
 
     openSnackBar(message: string, action?: string) {
