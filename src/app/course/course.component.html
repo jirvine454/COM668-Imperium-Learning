@@ -26,7 +26,7 @@
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
       <div class="rounded-lg overflow-hidden mb-10" *ngFor="let course of course_list | async">
         <div class="flex-shrink-0">
-          <img class="h-48 w-full object-cover" src="{{ course.course_image }}" alt="" />
+          <img class="h-48 w-full object-cover" src="{{ course.course_image }}" alt="course-image" />
         </div>
         <div class="flex flex-1 flex-col justify-between bg-slate-200">
           <div class="mt-2 block">
@@ -53,7 +53,7 @@
           <div class="mt-6 flex items-center">
             <div class="flex-shrink-0">
               <span class="sr-only">test</span>
-              <img class="h-10 w-10 rounded-full ml-3" src="{{ course.lecturer_image }}" alt="" />
+              <img class="h-10 w-10 rounded-full ml-3" src="{{ course.lecturer_image }}" alt="lecturer-image" />
             </div>
             <div class="ml-3">
               <p class="text-sm font-medium text-gray-900 ml-1">
@@ -72,7 +72,7 @@
       </div>
 
       <div class="container-fluid">
-        <p>Like what you see?</p><a href="mailto:">Click here to share via this course via email!</a>
+        <p>Like what you see?</p><a href="mailto:">Click here to share this course via email!</a>
       </div>
     </section>
 

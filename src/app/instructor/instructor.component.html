@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="mb-12 lg:mb-0">
-                    <img id="img" src="../assets/images/become_an_instructor.jpg" alt="image" class="w-full" />
+                    <img id="img" src="../assets/images/become_an_instructor.jpg" alt="become-an-instructor-image" class="w-full" />
                 </div>
             </div>
         </div>
@@ -245,7 +245,7 @@
             <div class="rounded-lg overflow-hidden mb-10" *ngFor="let course of course_list | async"
                 style="cursor: pointer" [routerLink]="['/app/courses', course._id]">
                 <div class="flex-shrink-0">
-                    <img class="h-48 w-full object-cover" src="{{ course.course_image }}" alt="" />
+                    <img class="h-48 w-full object-cover" src="{{ course.course_image }}" alt="profile-image" />
                 </div>
                 <div class="flex flex-1 flex-col justify-between bg-slate-200">
                     <div class="mt-2 block">
@@ -267,7 +267,7 @@
                     <div class="mt-6 flex items-center">
                         <div class="flex-shrink-0">
                             <span class="sr-only">test</span>
-                            <img class="h-10 w-10 rounded-full ml-3" src="{{ course.lecturer_image }}" alt="" />
+                            <img class="h-10 w-10 rounded-full ml-3" src="{{ course.lecturer_image }}" alt="lecturer-image" />
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900 ml-1 mb-1">
